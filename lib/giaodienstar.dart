@@ -230,7 +230,7 @@ class GiaoDienStar extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 175,
+                    height: 200,
                     width: 100,
                   ),
                 ],

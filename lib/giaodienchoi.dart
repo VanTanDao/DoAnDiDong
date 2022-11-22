@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vantan/giaodienstar.dart';
 
 class Giaodienchoi extends StatelessWidget {
   @override
@@ -12,21 +13,21 @@ class Giaodienchoi extends StatelessWidget {
           IconButton(onPressed: () {}, icon: Icon(Icons.brightness_high)),
         ],
         // title: const Text('Đăng Nhập'),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.volume_up)),
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.backspace)),
       ),
       body: Container(
-        color: Color.fromARGB(255, 208, 205, 205),
+        color: Color.fromARGB(255, 40, 156, 240),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             // crossAxisAlignment: CrossAxisAlignment.center,
 
             children: [
-              Image.asset(
-                "images/ailatrieuphu.jpg",
-                // height: 200,
-                // width: 200,
-              ),
+              // Image.asset(
+              //   "icons/logo_1.webp",
+              //   height: 200,
+              //   width: 200,
+              // ),
               // SizedBox(height: 50),
 
               Container(
@@ -35,190 +36,182 @@ class Giaodienchoi extends StatelessWidget {
                   'Chọn Lĩnh Vực Câu Hỏi',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 11, 110, 223),
-                      fontSize: 20),
+                      color: Color.fromARGB(255, 6, 6, 6),
+                      fontSize: 25),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  width: double.infinity,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 1,
-                          blurRadius: 1,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                      color: Color.fromARGB(255, 118, 116, 116),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      // TextButton(onPressed: onPressed, child: child)
-                      Icon(Icons.done,
-                          color: Color.fromARGB(255, 36, 113, 177)),
-                      SizedBox(width: 10),
-                      const Text(
-                        'Khoa Học',
-                        style: TextStyle(
-                          fontSize: 25,
-                          // fontWeight: fontWeight.bold,
-                          color: Color.fromARGB(255, 236, 9, 28),
-                        ),
-                      ),
-                    ],
+                padding: const EdgeInsets.only(top: 25, bottom: 25),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            // title: Text('Đăng Nhập'),
+                            content:
+                                Text('Bạn có chắc chọn đúng lĩnh vực chưa'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => GiaoDienStar(),
+                                        ),
+                                      ),
+                                  child: Text('OK'))
+                            ],
+                          );
+                        });
+                  },
+                  child: const Text(
+                    'Âm Nhạc',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: Color.fromARGB(255, 242, 243, 244),
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  width: double.infinity,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 1,
-                          blurRadius: 1,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                      color: Color.fromARGB(255, 118, 116, 116),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      // TextButton(onPressed: onPressed, child: child)
-                      Icon(Icons.done,
-                          color: Color.fromARGB(255, 36, 113, 177)),
-                      SizedBox(width: 10),
-                      const Text(
-                        'Lịch Sử',
-                        style: TextStyle(
-                          fontSize: 25,
-                          // fontWeight: fontWeight.bold,
-                          color: Color.fromARGB(255, 236, 9, 28),
-                        ),
-                      ),
-                    ],
+                padding: const EdgeInsets.only(top: 25, bottom: 25),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            // title: Text('Đăng Nhập'),
+                            content:
+                                Text('Bạn có chắc chọn đúng lĩnh vực chưa'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => GiaoDienStar(),
+                                        ),
+                                      ),
+                                  child: Text('OK'))
+                            ],
+                          );
+                        });
+                  },
+                  child: const Text(
+                    'Âm Nhạc',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: Color.fromARGB(255, 242, 243, 244),
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  width: double.infinity,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 1,
-                          blurRadius: 1,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                      color: Color.fromARGB(255, 118, 116, 116),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      // TextButton(onPressed: onPressed, child: child)
-                      Icon(Icons.done,
-                          color: Color.fromARGB(255, 36, 113, 177)),
-                      SizedBox(width: 10),
-                      const Text(
-                        'Thế Thao',
-                        style: TextStyle(
-                          fontSize: 25,
-                          // fontWeight: fontWeight.bold,
-                          color: Color.fromARGB(255, 236, 9, 28),
-                        ),
-                      ),
-                    ],
+                padding: const EdgeInsets.only(top: 25, bottom: 25),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            // title: Text('Đăng Nhập'),
+                            content:
+                                Text('Bạn có chắc chọn đúng lĩnh vực chưa'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => GiaoDienStar(),
+                                        ),
+                                      ),
+                                  child: Text('OK'))
+                            ],
+                          );
+                        });
+                  },
+                  child: const Text(
+                    'Âm Nhạc',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: Color.fromARGB(255, 242, 243, 244),
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  width: double.infinity,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 1,
-                          blurRadius: 1,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                      color: Color.fromARGB(255, 118, 116, 116),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      // TextButton(onPressed: onPressed, child: child)
-                      Icon(Icons.done,
-                          color: Color.fromARGB(255, 36, 113, 177)),
-                      SizedBox(width: 10),
-                      const Text(
-                        'Âm Nhạc',
-                        style: TextStyle(
-                          fontSize: 25,
-                          // fontWeight: fontWeight.bold,
-                          color: Color.fromARGB(255, 236, 9, 28),
-                        ),
-                      ),
-                    ],
+                padding: const EdgeInsets.only(top: 25, bottom: 25),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            // title: Text('Đăng Nhập'),
+                            content:
+                                Text('Bạn có chắc chọn đúng lĩnh vực chưa'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => GiaoDienStar(),
+                                        ),
+                                      ),
+                                  child: Text('OK'))
+                            ],
+                          );
+                        });
+                  },
+                  child: const Text(
+                    'Âm Nhạc',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: Color.fromARGB(255, 242, 243, 244),
+                    ),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Container(
-                  width: double.infinity,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey,
-                          spreadRadius: 1,
-                          blurRadius: 1,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],
-                      color: Color.fromARGB(255, 118, 116, 116),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      // TextButton(onPressed: onPressed, child: child)
-                      Icon(Icons.done,
-                          color: Color.fromARGB(255, 36, 113, 177)),
-                      SizedBox(width: 10),
-                      const Text(
-                        'Công Nghệ',
-                        style: TextStyle(
-                          fontSize: 25,
-                          // fontWeight: fontWeight.bold,
-                          color: Color.fromARGB(255, 236, 9, 28),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(15),
+              //   child: Container(
+              //     width: double.infinity,
+              //     height: 60,
+              //     decoration: BoxDecoration(
+              //         boxShadow: [
+              //           BoxShadow(
+              //             color: Colors.grey,
+              //             spreadRadius: 1,
+              //             blurRadius: 1,
+              //             offset: const Offset(0, 3),
+              //           ),
+              //         ],
+              //         color: Color.fromARGB(255, 118, 116, 116),
+              //         borderRadius:
+              //             const BorderRadius.all(Radius.circular(20))),
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: const [
+              //         // TextButton(onPressed: onPressed, child: child)
+              //         Icon(Icons.done,
+              //             color: Color.fromARGB(255, 36, 113, 177)),
+              //         SizedBox(width: 10),
+              //         const Text(
+              //           'Công Nghệ',
+              //           style: TextStyle(
+              //             fontSize: 25,
+              //             // fontWeight: fontWeight.bold,
+              //             color: Color.fromARGB(255, 236, 9, 28),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              SizedBox(
+                height: 500,
+                width: 500,
+              )
             ],
           ),
         ),

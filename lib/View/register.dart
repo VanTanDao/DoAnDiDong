@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vantan/giaodienchoi.dart';
 
 class Register extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class Register extends StatelessWidget {
       // title: const Text('Đào Văn Tân_0306201179'),
       // ),
       body: Container(
-        color: Color.fromARGB(255, 235, 237, 236),
+        color: Color.fromARGB(255, 40, 156, 240),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -21,7 +22,7 @@ class Register extends StatelessWidget {
                 child: Icon(
                   Icons.person_pin,
                   size: 100,
-                  color: Color.fromARGB(255, 212, 31, 31),
+                  color: Color.fromARGB(255, 63, 64, 64),
                 ),
               ),
               Container(
@@ -30,7 +31,7 @@ class Register extends StatelessWidget {
                   'Đăng Ký Tài Khoản',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 11, 110, 223),
+                      color: Color.fromARGB(255, 2, 2, 2),
                       fontSize: 20),
                 ),
               ),
@@ -98,10 +99,21 @@ class Register extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(15),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Giaodienchoi(),
+                      ),
+                    );
+                  },
                   child: const Text('Đăng Ký'),
                 ),
               ),
+              SizedBox(
+                height: 200,
+                width: 200,
+              )
               // Container(
               //   padding: const EdgeInsets.all(15),
               //   alignment: Alignment.centerRight,
