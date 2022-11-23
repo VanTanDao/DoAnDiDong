@@ -6,7 +6,7 @@ class Quenmatkau extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.red,
         elevation: 4.0,
         // actions: [
         //   IconButton(onPressed: () {}, icon: Icon(Icons.volume_mute)),
