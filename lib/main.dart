@@ -6,6 +6,8 @@ import 'package:vantan/quenmatkhau.dart';
 import 'package:vantan/View/register.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/thongtinchitiet.dart';
+import 'package:vantan/trang_chu.dart';
+import 'package:vantan/xep_hang.dart';
 
 void main(List<String> args) => runApp(MyApp());
 

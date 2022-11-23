@@ -6,17 +6,13 @@ class Quenmatkau extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.red,
         elevation: 4.0,
         // actions: [
         //   IconButton(onPressed: () {}, icon: Icon(Icons.volume_mute)),
         // ],
         // title: const Text('Đăng Nhập'),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(Icons.arrow_back)),
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
       ),
       body: Container(
         color: Color.fromARGB(255, 14, 125, 235),
@@ -28,7 +24,7 @@ class Quenmatkau extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 100),
                 child: Icon(
-                  Icons.person_pin,
+                  Icons.person_outline,
                   size: 150,
                   color: Color.fromARGB(255, 229, 24, 24),
                 ),
@@ -53,7 +49,7 @@ class Quenmatkau extends StatelessWidget {
                     fillColor: Colors.white,
                     labelStyle: TextStyle(color: Colors.black, fontSize: 15),
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: Icon(Icons.person_outline),
                   ),
                 ),
               ),
