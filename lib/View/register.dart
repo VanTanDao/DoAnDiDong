@@ -12,7 +12,7 @@ class Register extends StatelessWidget {
       // title: const Text('Đào Văn Tân_0306201179'),
       // ),
       body: Container(
-        color: Color.fromARGB(255, 235, 237, 236),
+        color: Color.fromARGB(255, 40, 156, 240),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,7 +24,7 @@ class Register extends StatelessWidget {
                 child: Icon(
                   Icons.person_outline,
                   size: 100,
-                  color: Color.fromARGB(255, 212, 31, 31),
+                  color: Color.fromARGB(255, 63, 64, 64),
                 ),
               ),
               Container(
@@ -33,7 +33,7 @@ class Register extends StatelessWidget {
                   'Đăng Ký Tài Khoản',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 11, 110, 223),
+                      color: Color.fromARGB(255, 2, 2, 2),
                       fontSize: 20),
                 ),
               ),
@@ -85,6 +85,19 @@ class Register extends StatelessWidget {
                   ),
                 ),
               ),
+              Container(
+                padding: const EdgeInsets.all(15),
+                child: const TextField(
+                  style: TextStyle(fontSize: 18, color: Colors.black),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'ResPass Password',
+                    labelStyle: TextStyle(color: Colors.black, fontSize: 15),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.password),
+                  ),
+                ),
+              ),
               /*Container(
                 padding: const EdgeInsets.all(15),
                 child: const TextField(
@@ -126,6 +139,10 @@ class Register extends StatelessWidget {
                   child: const Text('Đăng Ký'),
                 ),
               ),
+              SizedBox(
+                height: 200,
+                width: 200,
+              )
               // Container(
               //   padding: const EdgeInsets.all(15),
               //   alignment: Alignment.centerRight,

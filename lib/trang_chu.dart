@@ -2,6 +2,8 @@ import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:vantan/View/login.dart';
+import 'package:vantan/giaodienchoi.dart';
 import 'package:vantan/xep_hang.dart';
 
 class TrangChu extends StatelessWidget {
@@ -33,7 +35,11 @@ class TrangChu extends StatelessWidget {
             height: 50,
             width: 300,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => Giaodienchoi(),
+                  ),
+                  (Route<dynamic> route) => false),
               child: const Text(
                 'Chơi trò chơi',
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -101,7 +107,17 @@ class TrangChu extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: (context) => Login(),
+                        ),
+                        (Route<dynamic> route) => false);
+                    // giai thich remove may het may trang trc r moi push cai nay len
+
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) => Login()));
+                  },
                   child: const Text('Đăng xuất',
                       style: TextStyle(decoration: TextDecoration.underline)),
                 ),
