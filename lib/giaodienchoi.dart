@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vantan/login.dart';
 
 class Giaodienchoi extends StatelessWidget {
   @override
@@ -12,7 +13,14 @@ class Giaodienchoi extends StatelessWidget {
           IconButton(onPressed: () {}, icon: Icon(Icons.brightness_high)),
         ],
         // title: const Text('Đăng Nhập'),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.volume_up)),
+        leading: IconButton(onPressed: () {
+          Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Login(),
+                  ),
+                );
+        }, icon: Icon(Icons.arrow_back)),
       ),
       body: Container(
         color: Color.fromARGB(255, 208, 205, 205),

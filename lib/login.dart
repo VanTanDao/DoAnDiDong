@@ -20,7 +20,7 @@ class Login extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 100),
                 child: Icon(
-                  Icons.person_pin,
+                  Icons.person_outline,
                   size: 150,
                   color: Color.fromARGB(255, 229, 24, 24),
                 ),
@@ -148,7 +148,7 @@ class Login extends StatelessWidget {
               //   ),
               // ),
               Container(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

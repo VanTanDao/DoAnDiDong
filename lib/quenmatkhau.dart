@@ -8,11 +8,11 @@ class Quenmatkau extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.purple,
         elevation: 4.0,
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.volume_mute)),
-        ],
+        // actions: [
+        //   IconButton(onPressed: () {}, icon: Icon(Icons.volume_mute)),
+        // ],
         // title: const Text('Đăng Nhập'),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        //leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
       ),
       body: Container(
         color: Color.fromARGB(255, 14, 125, 235),
@@ -24,7 +24,7 @@ class Quenmatkau extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 100),
                 child: Icon(
-                  Icons.person_pin,
+                  Icons.person_outline,
                   size: 150,
                   color: Color.fromARGB(255, 229, 24, 24),
                 ),
@@ -49,48 +49,41 @@ class Quenmatkau extends StatelessWidget {
                     fillColor: Colors.white,
                     labelStyle: TextStyle(color: Colors.black, fontSize: 15),
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.person),
+                    prefixIcon: Icon(Icons.person_outline),
                   ),
                 ),
               ),
               Container(
-                padding: const EdgeInsets.only(
-                  top: 10,
-                  left: 170,
-                  right: 170,
-                ),
-                child: Container(
-                  width: double.infinity,
-                  height: 20,
-                  decoration: BoxDecoration(
-                      // boxShadow: [
-                      //   // BoxShadow(
-                      //   //   color: Colors.grey,
-                      //   //   spreadRadius: 1,
-                      //   //   blurRadius: 1,
-                      //   //   offset: const Offset(0, 3),
-                      //   // ),
-                      // ],
-                      color: Color.fromARGB(255, 255, 252, 252),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      // TextButton(onPressed: onPressed, child: child)
-                      Icon(Icons.done,
-                          color: Color.fromARGB(255, 36, 113, 177)),
-                      // SizedBox(width: 10),
-                      const Text(
-                        'Gửi',
-                        style: TextStyle(
-                          fontSize: 15,
-                          // fontWeight: fontWeight.bold,
-                          color: Color.fromARGB(255, 236, 9, 28),
-                        ),
+                width: 70,
+                height: 50,
+                decoration: BoxDecoration(
+                    // boxShadow: [
+                    //   // BoxShadow(
+                    //   //   color: Colors.grey,
+                    //   //   spreadRadius: 1,
+                    //   //   blurRadius: 1,
+                    //   //   offset: const Offset(0, 3),
+                    //   // ),
+                    // ],
+                    color: Color.fromARGB(255, 255, 252, 252),
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(10))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    // TextButton(onPressed: onPressed, child: child)
+                    Icon(Icons.done,
+                        color: Color.fromARGB(255, 36, 113, 177)),
+                    // SizedBox(width: 15),
+                    const Text(
+                      'Gửi',
+                      style: TextStyle(
+                        fontSize: 15,
+                        //fontWeight: fontWeight.bold,
+                        color: Color.fromARGB(255, 236, 9, 28),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(

@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vantan/login.dart';
 
 class Register extends StatelessWidget {
   @override
@@ -19,7 +22,7 @@ class Register extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 50),
                 child: Icon(
-                  Icons.person_pin,
+                  Icons.person_outline,
                   size: 100,
                   color: Color.fromARGB(255, 212, 31, 31),
                 ),
@@ -98,7 +101,28 @@ class Register extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(15),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text('Đăng Ký'),
+                            content:
+                                Text('Chúc mừng bạn đã đăng ký thành công'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Login(),
+                                        ),
+                                      ),
+                                  child: Text('OK'))
+                            ],
+                          );
+                        });
+
+                  },
                   child: const Text('Đăng Ký'),
                 ),
               ),
