@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/giaodienstar.dart';
+import 'package:vantan/trang_chu.dart';
 
 class Giaodienchoi extends StatelessWidget {
   @override
@@ -13,7 +14,15 @@ class Giaodienchoi extends StatelessWidget {
           IconButton(onPressed: () {}, icon: Icon(Icons.brightness_high)),
         ],
         // title: const Text('Đăng Nhập'),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.backspace)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => TrangChu(),
+                  ),
+                  (Route<dynamic> route) => false);
+            },
+            icon: Icon(Icons.arrow_back)),
       ),
       body: Container(
         color: Color.fromARGB(255, 40, 156, 240),
@@ -53,12 +62,13 @@ class Giaodienchoi extends StatelessWidget {
                                 Text('Bạn có chắc chọn đúng lĩnh vực chưa'),
                             actions: [
                               TextButton(
-                                  onPressed: () => Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => GiaoDienStar(),
-                                        ),
-                                      ),
+                                  onPressed: () =>
+                                      Navigator.of(context).pushAndRemoveUntil(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                GiaoDienStar(),
+                                          ),
+                                          (Route<dynamic> route) => false),
                                   child: Text('OK'))
                             ],
                           );
@@ -152,12 +162,13 @@ class Giaodienchoi extends StatelessWidget {
                                 Text('Bạn có chắc chọn đúng lĩnh vực chưa'),
                             actions: [
                               TextButton(
-                                  onPressed: () => Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => GiaoDienStar(),
-                                        ),
-                                      ),
+                                  onPressed: () =>
+                                      Navigator.of(context).pushAndRemoveUntil(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                Giaodienchoi(),
+                                          ),
+                                          (Route<dynamic> route) => false),
                                   child: Text('OK'))
                             ],
                           );

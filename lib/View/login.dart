@@ -4,6 +4,7 @@ import 'package:vantan/giaodienchoi.dart';
 import 'package:vantan/giaodienstar.dart';
 import 'package:vantan/quenmatkhau.dart';
 import 'package:vantan/View/register.dart';
+import 'package:vantan/trang_chu.dart';
 
 class Login extends StatelessWidget {
   @override
@@ -85,13 +86,12 @@ class Login extends StatelessWidget {
                                   Text('Chúc mừng bạn đã dăng nhập thành công'),
                               actions: [
                                 TextButton(
-                                    onPressed: () => Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                Giaodienchoi(),
-                                          ),
-                                        ),
+                                    onPressed: () => Navigator.of(context)
+                                        .pushAndRemoveUntil(
+                                            MaterialPageRoute(
+                                              builder: (context) => TrangChu(),
+                                            ),
+                                            (Route<dynamic> route) => false),
                                     child: Text('OK'))
                               ],
                             );

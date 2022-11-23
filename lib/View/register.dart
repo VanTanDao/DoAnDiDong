@@ -83,6 +83,19 @@ class Register extends StatelessWidget {
                   ),
                 ),
               ),
+              Container(
+                padding: const EdgeInsets.all(15),
+                child: const TextField(
+                  style: TextStyle(fontSize: 18, color: Colors.black),
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'ResPass Password',
+                    labelStyle: TextStyle(color: Colors.black, fontSize: 15),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.password),
+                  ),
+                ),
+              ),
               /*Container(
                 padding: const EdgeInsets.all(15),
                 child: const TextField(

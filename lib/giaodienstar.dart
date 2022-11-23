@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/main.dart';
 
@@ -12,11 +11,11 @@ class GiaoDienStar extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {}, icon: Icon(Icons.add_shopping_cart_sharp)),
-          IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.align_vertical_bottom_outlined)),
+          // IconButton(
+          //     onPressed: () {},
+          //     icon: Icon(Icons.align_vertical_bottom_outlined)),
         ],
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.phone_android)),
       ),
       body: Center(
         child: Container(
@@ -69,8 +68,8 @@ class GiaoDienStar extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
                           // TextButton(onPressed: onPressed, child: child)
-                          Icon(Icons.done,
-                              color: Color.fromARGB(255, 36, 113, 177)),
+                          // Icon(Icons.done,
+                          //     color: Color.fromARGB(255, 36, 113, 177)),
                           SizedBox(width: 10),
                           const Text(
                             'A:',
@@ -106,8 +105,8 @@ class GiaoDienStar extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
                           // TextButton(onPressed: onPressed, child: child)
-                          Icon(Icons.done,
-                              color: Color.fromARGB(255, 36, 113, 177)),
+                          // Icon(Icons.done,
+                          //     color: Color.fromARGB(255, 36, 113, 177)),
                           SizedBox(width: 10),
                           const Text(
                             'A:',
@@ -143,8 +142,8 @@ class GiaoDienStar extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
                           // TextButton(onPressed: onPressed, child: child)
-                          Icon(Icons.done,
-                              color: Color.fromARGB(255, 36, 113, 177)),
+                          // Icon(Icons.done,
+                          //     color: Color.fromARGB(255, 36, 113, 177)),
                           SizedBox(width: 10),
                           const Text(
                             'A:',
@@ -180,8 +179,8 @@ class GiaoDienStar extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
                           // TextButton(onPressed: onPressed, child: child)
-                          Icon(Icons.done,
-                              color: Color.fromARGB(255, 36, 113, 177)),
+                          // Icon(Icons.done,
+                          //     color: Color.fromARGB(255, 36, 113, 177)),
                           SizedBox(width: 10),
                           const Text(
                             'A:',

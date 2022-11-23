@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vantan/trang_chu.dart';
 
 class XepHang extends StatelessWidget {
   @override
@@ -14,7 +15,11 @@ class XepHang extends StatelessWidget {
             //     builder: (context) => TrangChu(),
             //   ),
             // );
-            Navigator.pop(context);
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (context) => TrangChu(),
+                ),
+                (Route<dynamic> route) => false);
           },
           icon: Icon(Icons.arrow_back_sharp),
           iconSize: 40,
