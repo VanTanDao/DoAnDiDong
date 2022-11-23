@@ -40,7 +40,7 @@ class Login extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(15),
                   child: const TextField(
-                    style: TextStyle(fontSize: 20, color: Colors.black),
+                    style: TextStyle(fontSize: 18, color: Colors.black),
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -98,13 +98,16 @@ class Login extends StatelessWidget {
                           });
                     },
                     child: const Text(
-                      'LOG IN',
+                      'Đăng nhập',
                       style: TextStyle(
                         fontSize: 20,
                         color: Color.fromARGB(255, 242, 243, 244),
                       ),
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 42,
                 ),
                 // Padding(
                 //   padding: const EdgeInsets.only(top: 10, left: 120, right: 120),
@@ -193,10 +196,10 @@ class Login extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 200,
-                  width: 200,
-                )
+                // SizedBox(
+                //   height: 175,
+                //   width: 200,
+                // )
               ],
             ),
           ),

@@ -10,22 +10,25 @@ class Giaodienchoi extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.purple,
         elevation: 4.0,
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.brightness_high)),
-        ],
+        // actions: [
+        //   IconButton(onPressed: () {}, icon: Icon(Icons.brightness_high)),
+        // ],
         // title: const Text('Đăng Nhập'),
         leading: IconButton(
+            // onPressed: () {
+            //   Navigator.of(context).pushAndRemoveUntil(
+            //       MaterialPageRoute(
+            //         builder: (context) => TrangChu(),
+            //       ),
+            //       (Route<dynamic> route) => false);
+            // },
             onPressed: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (context) => TrangChu(),
-                  ),
-                  (Route<dynamic> route) => false);
+              Navigator.pop(context);
             },
             icon: Icon(Icons.arrow_back)),
       ),
       body: Container(
-        color: Color.fromARGB(255, 40, 156, 240),
+        color: Color.fromARGB(255, 0, 140, 255),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

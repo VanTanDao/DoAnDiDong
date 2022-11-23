@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:vantan/View/login.dart';
 import 'package:vantan/giaodienchoi.dart';
+import 'package:vantan/thongtinchitiet.dart';
 import 'package:vantan/xep_hang.dart';
 
 class TrangChu extends StatelessWidget {
@@ -19,7 +20,7 @@ class TrangChu extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 50,
-                color: Colors.blue,
+                color: Color.fromARGB(255, 8, 8, 8),
               ),
             ),
           ),
@@ -35,11 +36,15 @@ class TrangChu extends StatelessWidget {
             height: 50,
             width: 300,
             child: ElevatedButton(
-              onPressed: () => Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (context) => Giaodienchoi(),
-                  ),
-                  (Route<dynamic> route) => false),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Giaodienchoi()));
+              },
+              // onPressed: () => Navigator.of(context).pushAndRemoveUntil(
+              //     MaterialPageRoute(
+              //       builder: (context) => Giaodienchoi(),
+              //     ),
+              //     (Route<dynamic> route) => false),
               child: const Text(
                 'Chơi trò chơi',
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
@@ -51,7 +56,14 @@ class TrangChu extends StatelessWidget {
             height: 50,
             width: 300,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ThongTinChiTiet(),
+                  ),
+                );
+              },
               child: const Text(
                 'Quản lý thông tin tài khoản',
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
