@@ -1,3 +1,4 @@
+import 'package:vantan/Quiz/quiz_app.dart';
 import 'package:vantan/doimatkhau.dart';
 import 'package:vantan/giaodienchoi.dart';
 import 'package:vantan/giaodienstar.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: Login(),
+      home: QuizApp(),
     );
   }
 }
