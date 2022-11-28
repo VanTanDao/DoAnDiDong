@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vantan/login.dart';
+import 'package:vantan/Quiz/quiztions_sceen.dart';
 import 'package:vantan/giaodienstar.dart';
 import 'package:vantan/trang_chu.dart';
 
@@ -11,22 +11,25 @@ class Giaodienchoi extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.purple,
         elevation: 4.0,
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.brightness_high)),
-        ],
+        // actions: [
+        //   IconButton(onPressed: () {}, icon: Icon(Icons.brightness_high)),
+        // ],
         // title: const Text('Đăng Nhập'),
         leading: IconButton(
+            // onPressed: () {
+            //   Navigator.of(context).pushAndRemoveUntil(
+            //       MaterialPageRoute(
+            //         builder: (context) => TrangChu(),
+            //       ),
+            //       (Route<dynamic> route) => false);
+            // },
             onPressed: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                    builder: (context) => TrangChu(),
-                  ),
-                  (Route<dynamic> route) => false);
+              Navigator.pop(context);
             },
             icon: Icon(Icons.arrow_back)),
       ),
       body: Container(
-        color: Color.fromARGB(255, 40, 156, 240),
+        color: Color.fromARGB(255, 0, 140, 255),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,8 +69,7 @@ class Giaodienchoi extends StatelessWidget {
                                   onPressed: () =>
                                       Navigator.of(context).pushAndRemoveUntil(
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                GiaoDienStar(),
+                                            builder: (context) => QuizScreen(),
                                           ),
                                           (Route<dynamic> route) => false),
                                   child: Text('OK'))
@@ -100,7 +102,7 @@ class Giaodienchoi extends StatelessWidget {
                                   onPressed: () => Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => GiaoDienStar(),
+                                          builder: (context) => QuizScreen(),
                                         ),
                                       ),
                                   child: Text('OK'))
@@ -133,7 +135,7 @@ class Giaodienchoi extends StatelessWidget {
                                   onPressed: () => Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => GiaoDienStar(),
+                                          builder: (context) => QuizScreen(),
                                         ),
                                       ),
                                   child: Text('OK'))

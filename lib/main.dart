@@ -1,8 +1,8 @@
+import 'package:vantan/Quiz/quiz_app.dart';
 import 'package:vantan/doimatkhau.dart';
 import 'package:vantan/giaodienchoi.dart';
 import 'package:vantan/giaodienstar.dart';
 import 'package:vantan/View/login.dart';
-import 'package:vantan/quanlithongtin.dart';
 import 'package:vantan/quenmatkhau.dart';
 import 'package:vantan/View/register.dart';
 import 'package:flutter/material.dart';

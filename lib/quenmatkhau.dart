@@ -6,13 +6,13 @@ class Quenmatkau extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.red,
         elevation: 4.0,
         // actions: [
         //   IconButton(onPressed: () {}, icon: Icon(Icons.volume_mute)),
         // ],
         // title: const Text('Đăng Nhập'),
-        //leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
       ),
       body: Container(
         color: Color.fromARGB(255, 14, 125, 235),
@@ -54,41 +54,44 @@ class Quenmatkau extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 70,
-                height: 50,
-                decoration: BoxDecoration(
-                    // boxShadow: [
-                    //   // BoxShadow(
-                    //   //   color: Colors.grey,
-                    //   //   spreadRadius: 1,
-                    //   //   blurRadius: 1,
-                    //   //   offset: const Offset(0, 3),
-                    //   // ),
-                    // ],
-                    color: Color.fromARGB(255, 255, 252, 252),
-                    borderRadius:
-                        const BorderRadius.all(Radius.circular(10))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    // TextButton(onPressed: onPressed, child: child)
-                    Icon(Icons.done,
-                        color: Color.fromARGB(255, 36, 113, 177)),
-                    // SizedBox(width: 15),
-                    const Text(
-                      'Gửi',
-                      style: TextStyle(
-                        fontSize: 15,
-                        //fontWeight: fontWeight.bold,
-                        color: Color.fromARGB(255, 236, 9, 28),
-                      ),
+                padding: const EdgeInsets.only(
+                  top: 10,
+                  left: 170,
+                  right: 170,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text('Thông báo'),
+                            content:
+                                Text('Đã gửi mật khẩu mới về gmail của bạn'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text('OK'))
+                            ],
+                          );
+                        });
+                  },
+                  child: const Text(
+                    'Gửi',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 242, 243, 244),
                     ),
-                  ],
+                  ),
                 ),
               ),
               SizedBox(
-                height: 200,
-                width: 100,
+                height: 140,
               ),
             ],
           ),

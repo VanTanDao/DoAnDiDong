@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/giaodienchoi.dart';
+import 'package:vantan/thongtinchitiet.dart';
 
 class DoiMatKhau extends StatelessWidget {
   @override
@@ -15,12 +16,7 @@ class DoiMatKhau extends StatelessWidget {
         // title: const Text('Đăng Nhập'),
         leading: IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Giaodienchoi(),
-                ),
-              );
+              Navigator.pop(context);
             },
             icon: Icon(Icons.arrow_back)),
       ),
@@ -32,11 +28,11 @@ class DoiMatKhau extends StatelessWidget {
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 150),
+                padding: const EdgeInsets.all(40),
                 child: Icon(
                   Icons.person_pin,
                   size: 150,
-                  color: Color.fromARGB(255, 229, 24, 24),
+                  color: Color.fromARGB(255, 63, 64, 64),
                 ),
               ),
               Container(
@@ -136,9 +132,11 @@ class DoiMatKhau extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(15),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: const Text(
-                    'LOG IN',
+                    'Xác Nhận',
                     style: TextStyle(
                       fontSize: 20,
                       color: Color.fromARGB(255, 225, 228, 231),
@@ -147,8 +145,7 @@ class DoiMatKhau extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 200,
-                width: 100,
+                height: 10,
               ),
             ],
           ),

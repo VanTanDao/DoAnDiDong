@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vantan/main.dart';
+import 'package:vantan/trang_chu.dart';
 
 class GiaoDienStar extends StatelessWidget {
   @override
@@ -15,7 +16,11 @@ class GiaoDienStar extends StatelessWidget {
           //     onPressed: () {},
           //     icon: Icon(Icons.align_vertical_bottom_outlined)),
         ],
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.phone_android)),
+        leading: IconButton(
+            onPressed: () {
+              // Navigator.push(context)=;
+            },
+            icon: Icon(Icons.arrow_back)),
       ),
       body: Center(
         child: Container(
@@ -109,7 +114,7 @@ class GiaoDienStar extends StatelessWidget {
                           //     color: Color.fromARGB(255, 36, 113, 177)),
                           SizedBox(width: 10),
                           const Text(
-                            'A:',
+                            'B:',
                             style: TextStyle(
                               fontSize: 15,
                               // fontWeight: fontWeight.bold,
@@ -146,7 +151,7 @@ class GiaoDienStar extends StatelessWidget {
                           //     color: Color.fromARGB(255, 36, 113, 177)),
                           SizedBox(width: 10),
                           const Text(
-                            'A:',
+                            'C:',
                             style: TextStyle(
                               fontSize: 15,
                               // fontWeight: fontWeight.bold,
@@ -183,7 +188,7 @@ class GiaoDienStar extends StatelessWidget {
                           //     color: Color.fromARGB(255, 36, 113, 177)),
                           SizedBox(width: 10),
                           const Text(
-                            'A:',
+                            'D:',
                             style: TextStyle(
                               fontSize: 15,
                               // fontWeight: fontWeight.bold,
@@ -200,31 +205,56 @@ class GiaoDienStar extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(
-                          Icons.verified_user_sharp,
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TrangChu()));
+                          },
+                          icon: Icon(Icons.attach_money),
                           color: Colors.red,
-                          size: 24.0,
                         ),
-                        Icon(
-                          Icons.add_call,
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TrangChu()));
+                          },
+                          icon: Icon(Icons.next_plan),
                           color: Colors.red,
-                          size: 24.0,
                         ),
-                        Icon(
-                          Icons.favorite,
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TrangChu()));
+                          },
+                          icon: Icon(Icons.call_end),
                           color: Colors.red,
-                          size: 24.0,
                         ),
-                        Icon(
-                          Icons.favorite,
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TrangChu()));
+                          },
+                          icon: Icon(Icons.analytics),
                           color: Colors.red,
-                          size: 24.0,
                         ),
-                        Icon(
-                          Icons.favorite,
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TrangChu()));
+                          },
+                          icon: Icon(Icons.two_k_plus),
                           color: Colors.red,
-                          size: 24.0,
-                        )
+                        ),
                       ],
                     ),
                   ),
