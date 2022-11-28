@@ -1,20 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vantan/View/register.dart';
 import 'package:vantan/giaodienchoi.dart';
 import 'package:vantan/giaodienstar.dart';
 import 'package:vantan/quenmatkhau.dart';
-import 'package:vantan/register.dart';
+
 
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
+      appBar: AppBar(
+        actions: [],
+      ),
       body: Container(
         color: Color.fromARGB(255, 14, 125, 235),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
