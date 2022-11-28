@@ -6,7 +6,6 @@ class XepHang extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 4.0,
         leading: IconButton(
           onPressed: () {
             // Navigator.push(
@@ -21,7 +20,7 @@ class XepHang extends StatelessWidget {
                 ),
                 (Route<dynamic> route) => false);
           },
-          icon: Icon(Icons.arrow_back_sharp),
+          icon: Icon(Icons.arrow_back),
           iconSize: 40,
         ),
       ),
@@ -49,10 +48,10 @@ class XepHang extends StatelessWidget {
           //   ),
           // ),
           Container(
-            child: Icon(
-              Icons.analytics_sharp,
-              size: 250,
-              color: Colors.white,
+            child: Image(
+              height: 200,
+              width: 250,
+              image: AssetImage("images/rank-removebg-preview.png"),
             ),
           ),
           // Container(

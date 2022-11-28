@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vantan/login.dart';
+import 'package:vantan/Quiz/quiztions_sceen.dart';
 import 'package:vantan/giaodienstar.dart';
 import 'package:vantan/trang_chu.dart';
 
@@ -69,8 +69,7 @@ class Giaodienchoi extends StatelessWidget {
                                   onPressed: () =>
                                       Navigator.of(context).pushAndRemoveUntil(
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                GiaoDienStar(),
+                                            builder: (context) => QuizScreen(),
                                           ),
                                           (Route<dynamic> route) => false),
                                   child: Text('OK'))
@@ -103,7 +102,7 @@ class Giaodienchoi extends StatelessWidget {
                                   onPressed: () => Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => GiaoDienStar(),
+                                          builder: (context) => QuizScreen(),
                                         ),
                                       ),
                                   child: Text('OK'))
@@ -136,7 +135,7 @@ class Giaodienchoi extends StatelessWidget {
                                   onPressed: () => Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => GiaoDienStar(),
+                                          builder: (context) => QuizScreen(),
                                         ),
                                       ),
                                   child: Text('OK'))

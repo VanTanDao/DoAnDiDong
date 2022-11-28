@@ -72,7 +72,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     ),
                     child: IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.pop(context); //trả về gd gameover
                         },
                         icon: const Icon(
                           CupertinoIcons.xmark,
