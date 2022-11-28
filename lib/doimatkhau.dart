@@ -8,7 +8,7 @@ class DoiMatKhau extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        backgroundColor: Color.fromARGB(255, 4, 172, 249),
         elevation: 4.0,
         actions: [
           // IconButton(onPressed: () {}, icon: Icon(Icons.volume_mute)),

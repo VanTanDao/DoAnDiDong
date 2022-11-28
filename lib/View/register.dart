@@ -18,7 +18,7 @@ class Register extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Color.fromARGB(255, 40, 106, 240),
+        color: Color.fromARGB(255, 40, 156, 240),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,16 +1,15 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/Quiz/quiztions_sceen.dart';
-import 'package:vantan/giaodienstar.dart';
-import 'package:vantan/trang_chu.dart';
+// import 'package:vantan/giaodienstar.dart';
+// import 'package:vantan/trang_chu.dart';
 
 class Giaodienchoi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
-        elevation: 4.0,
+        backgroundColor: Color.fromARGB(255, 40, 156, 240),
         // actions: [
         //   IconButton(onPressed: () {}, icon: Icon(Icons.brightness_high)),
         // ],

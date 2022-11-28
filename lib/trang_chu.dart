@@ -126,7 +126,10 @@ class TrangChu extends StatelessWidget {
                       //     MaterialPageRoute(builder: (context) => Login()));
                     },
                     child: const Text('Đăng xuất',
-                        style: TextStyle(decoration: TextDecoration.underline)),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          decoration: TextDecoration.underline)),
                   ),
                 ],
               ),

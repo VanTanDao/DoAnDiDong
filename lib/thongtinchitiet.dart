@@ -32,7 +32,7 @@ class ThongTinChiTietState extends State<ThongTinChiTiet> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 12, 10, 12),
+        backgroundColor: Color.fromARGB(255, 40, 156, 240),
         elevation: 4.0,
         leading: IconButton(
             onPressed: () {

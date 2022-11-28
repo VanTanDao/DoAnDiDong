@@ -9,7 +9,22 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 4, 172, 249),
+        actions: [
+           IconButton(onPressed: () {
+            showAboutDialog(context: context,
+            applicationName:"HƯỚNG DẪN CHƠI",
+            children: [
+              Text("1. Người chơi có duy nhất 1 lượt chơi."),
+              Text("2. Mỗi lượt chơi sẽ gồm 4 đáp án cho mỗi câu hỏi."),
+              Text("3. Người chơi sẽ có 5 sự trợ giúp ở mỗi lượt chơi."),
+              Text("4. Mỗi sự trợ giúp chỉ được sử dụng 1 lần cho 1 lượt chơi"),
+              Text("5. Khi trả lơi sai sẽ kết thúc lượt chơi")
+            ],);
+           }, icon: Icon(Icons.integration_instructions_outlined)),
+        ],
+      ),
       body: Container(
         color: Color.fromARGB(255, 40, 156, 240),
         child: SingleChildScrollView(
@@ -169,6 +184,7 @@ class Login extends StatelessWidget {
                       child: const Text(
                         'Quên Mật Khẩu',
                         style: TextStyle(
+                            fontSize: 15,
                             color: Color.fromARGB(255, 232, 233, 235),
                             decoration: TextDecoration.underline),
                       ),
@@ -185,6 +201,7 @@ class Login extends StatelessWidget {
                       child: const Text(
                         'Đăng Ký',
                         style: TextStyle(
+                            fontSize: 15,
                             color: Color.fromARGB(255, 232, 233, 235),
                             decoration: TextDecoration.underline),
                       ),

@@ -26,7 +26,7 @@ class GiaoDienStar extends StatelessWidget {
         child: Container(
           // padding: const EdgeInsets.all(),
           child: Container(
-            color: Color.fromARGB(255, 4, 118, 225),
+            color: Color.fromARGB(255, 4, 172, 249),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

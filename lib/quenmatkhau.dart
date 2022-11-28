@@ -6,16 +6,16 @@ class Quenmatkau extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Color.fromARGB(255, 4, 172, 249),
         elevation: 4.0,
         // actions: [
         //   IconButton(onPressed: () {}, icon: Icon(Icons.volume_mute)),
         // ],
         // title: const Text('Đăng Nhập'),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        // leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
       ),
       body: Container(
-        color: Color.fromARGB(255, 14, 125, 235),
+        color: Color.fromARGB(255, 4, 172, 249),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -26,7 +26,7 @@ class Quenmatkau extends StatelessWidget {
                 child: Icon(
                   Icons.person_outline,
                   size: 150,
-                  color: Color.fromARGB(255, 229, 24, 24),
+                  color: Color.fromARGB(255, 1, 144, 247),
                 ),
               ),
               Container(
