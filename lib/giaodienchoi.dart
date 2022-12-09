@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/Quiz/quiztions_sceen.dart';
-import 'package:vantan/giaodienstar.dart';
 import 'package:vantan/trang_chu.dart';
 
 class Giaodienchoi extends StatelessWidget {
@@ -63,16 +62,19 @@ class Giaodienchoi extends StatelessWidget {
                           return AlertDialog(
                             // title: Text('Đăng Nhập'),
                             content:
-                                Text('Bạn có chắc chọn đúng lĩnh vực chưa'),
+                                Text('Bạn có chắc chọn đúng lĩnh vực chưa ? '),
                             actions: [
                               TextButton(
-                                  onPressed: () =>
-                                      Navigator.of(context).pushAndRemoveUntil(
-                                          MaterialPageRoute(
-                                            builder: (context) => QuizScreen(),
-                                          ),
-                                          (Route<dynamic> route) => false),
-                                  child: Text('OK'))
+                                  onPressed: () => Navigator.pop(context),
+                                  child: Text('Không')),
+                              TextButton(
+                                  onPressed: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => QuizScreen(),
+                                        ),
+                                      ),
+                                  child: Text('Có')),
                             ],
                           );
                         });

@@ -1,7 +1,7 @@
-import 'package:vantan/Quiz/quiz_app.dart';
+import 'package:vantan/Quiz/game_over.dart';
+import 'package:vantan/Quiz/quiztions_sceen.dart';
 import 'package:vantan/doimatkhau.dart';
 import 'package:vantan/giaodienchoi.dart';
-import 'package:vantan/giaodienstar.dart';
 import 'package:vantan/View/login.dart';
 import 'package:vantan/quenmatkhau.dart';
 import 'package:vantan/View/register.dart';
