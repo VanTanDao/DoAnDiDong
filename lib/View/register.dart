@@ -18,18 +18,17 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class RegisterScreenState extends State<RegisterScreen> {
-  String email = '';
-  String username = '';
-  String password = '';
-  String repassword = '';
-
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController repassword = TextEditingController();
   createAccountPressed() async {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(email);
+        .hasMatch(email.text);
     if (emailValid) {
-      http.Response response =
-          await AuthService.register(username, email, password, repassword);
+      http.Response response = await AuthService.register(
+          username.text, email.text, password.text, repassword.text);
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
         // Navigator.push(
@@ -55,10 +54,10 @@ class RegisterScreenState extends State<RegisterScreen> {
               );
             });
       } else {
-        if (password.length < 8) {
+        if (password.text.length < 8) {
           errorSnackBar(context, 'Mật khẩu ít nhất 8 ký tự');
         } else {
-          if (password != repassword) {
+          if (password.text != repassword.text) {
             errorSnackBar(context, 'Xác nhận mật khẩu không khớp');
           } else
             errorSnackBar(context, 'Email hoặc tài khoản đã tồn tại');
@@ -67,6 +66,16 @@ class RegisterScreenState extends State<RegisterScreen> {
     } else {
       errorSnackBar(context, 'Sai định dạng email');
     }
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    username.dispose();
+    email.dispose();
+    password.dispose();
+    repassword.dispose();
+    super.dispose();
   }
 
   @override
@@ -109,9 +118,7 @@ class RegisterScreenState extends State<RegisterScreen> {
               Container(
                 padding: EdgeInsets.all(10),
                 child: TextField(
-                  onChanged: (value) {
-                    email = value;
-                  },
+                  controller: email,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -140,9 +147,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                 padding: EdgeInsets.all(10),
                 child: TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black),
-                  onChanged: (value) {
-                    username = value;
-                  },
+                  controller: username,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -158,9 +163,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                 child: TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black),
                   obscureText: true,
-                  onChanged: (value) {
-                    password = value;
-                  },
+                  controller: password,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -176,9 +179,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                 child: TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black),
                   obscureText: true,
-                  onChanged: (value) {
-                    repassword = value;
-                  },
+                  controller: repassword,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,

@@ -16,12 +16,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
-  String username = '';
-  String password = '';
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
 
   loginPressed() async {
-    if (username.isNotEmpty && password.isNotEmpty) {
-      http.Response response = await AuthService.login(username, password);
+    if (username.text.isNotEmpty && password.text.isNotEmpty) {
+      http.Response response =
+          await AuthService.login(username.text, password.text);
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
         Navigator.push(
@@ -35,6 +36,14 @@ class LoginScreenState extends State<LoginScreen> {
     } else {
       errorSnackBar(context, 'Vui lòng nhập đầy đử thông tin');
     }
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    username.dispose();
+    password.dispose();
+    super.dispose();
   }
 
   @override
@@ -70,9 +79,7 @@ class LoginScreenState extends State<LoginScreen> {
                 padding: EdgeInsets.all(15),
                 child: TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black),
-                  onChanged: (value) {
-                    username = value;
-                  },
+                  controller: username,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -88,9 +95,7 @@ class LoginScreenState extends State<LoginScreen> {
                 child: TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black),
                   obscureText: true,
-                  onChanged: (value) {
-                    password = value;
-                  },
+                  controller: password,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
