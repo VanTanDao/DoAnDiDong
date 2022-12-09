@@ -5,7 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:vantan/View/login.dart';
 import 'package:vantan/giaodienchoi.dart';
 
-class Register extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return RegisterScreenState();
+  }
+}
+
+class RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
