@@ -6,13 +6,13 @@ class Quenmatkau extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.grey,
         elevation: 4.0,
         // actions: [
         //   IconButton(onPressed: () {}, icon: Icon(Icons.volume_mute)),
         // ],
         // title: const Text('Đăng Nhập'),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
+        // leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
       ),
       body: Container(
         color: Color.fromARGB(255, 14, 125, 235),

@@ -63,20 +63,20 @@ class RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                child: const TextField(
-                  keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.white,
-                    labelText: 'Phone',
-                    labelStyle: TextStyle(fontSize: 10),
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.phone),
-                  ),
-                ),
-              ),
+              // Container(
+              //   padding: const EdgeInsets.all(10),
+              //   child: const TextField(
+              //     keyboardType: TextInputType.phone,
+              //     decoration: InputDecoration(
+              //       filled: true,
+              //       fillColor: Colors.white,
+              //       labelText: 'Phone',
+              //       labelStyle: TextStyle(fontSize: 10),
+              //       border: OutlineInputBorder(),
+              //       prefixIcon: Icon(Icons.phone),
+              //     ),
+              //   ),
+              // ),
               Container(
                 padding: const EdgeInsets.all(10),
                 child: const TextField(
@@ -84,7 +84,7 @@ class RegisterScreenState extends State<RegisterScreen> {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    labelText: 'UserName',
+                    labelText: 'Tài khoản',
                     labelStyle: TextStyle(fontSize: 10),
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.person),
@@ -167,10 +167,10 @@ class RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               ),
-              // SizedBox(
-              //   height: 200,
-              //   width: 200,
-              // )
+              SizedBox(
+                height: 79,
+                //   width: 200,
+              )
               // Container(
               //   padding: const EdgeInsets.all(10),
               //   alignment: Alignment.centerRight,

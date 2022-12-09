@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/Quiz/colors.dart';
-import 'package:vantan/Quiz/quiz_app.dart';
+import 'package:vantan/Quiz/game_over.dart';
 import 'package:vantan/Quiz/text_style.dart';
+import 'package:vantan/giaodienchoi.dart';
+import 'package:vantan/trang_chu.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({Key? key}) : super(key: key);
@@ -28,7 +30,7 @@ class _QuizScreenState extends State<QuizScreen> {
     super.dispose();
   }
 
-  int seconds = 60;
+  int seconds = 1000;
   Timer? timer;
   var currentQuestionIndex = 0;
 
@@ -60,141 +62,193 @@ class _QuizScreenState extends State<QuizScreen> {
               colors: [blue, darkBlue],
             ),
           ),
-          child: SingleChildScrollView(
-            child: Column(children: [
-              Row(
+          child: Column(children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    border: Border.all(color: lightgrey, width: 2),
+                  ),
+                  child: IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              content: Text(
+                                  'Nếu quay về thì bạn sẽ thua, bạn chắc chưa ?'),
+                              actions: [
+                                TextButton(
+                                    onPressed: () => Navigator.pop(context),
+                                    child: Text('Không')),
+                                TextButton(
+                                    onPressed: () => Navigator.of(context)
+                                        .pushAndRemoveUntil(
+                                            MaterialPageRoute(
+                                              builder: (context) => TrangChu(),
+                                            ),
+                                            (Route<dynamic> route) => false),
+                                    child: Text('Có')),
+                              ],
+                            );
+                          },
+                        );
+                        // Navigator.of(context).pushAndRemoveUntil(
+                        //     MaterialPageRoute(
+                        //       builder: (context) => Giaodienchoi(),
+                        //     ),
+                        //     (Route<dynamic> route) => false);
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                        size: 30,
+                      )),
+                ),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    normalText(color: Colors.white, size: 25, text: "$seconds"),
+                    SizedBox(
+                      width: 50,
+                      height: 50,
+                      child: CircularProgressIndicator(
+                        value: seconds / 60,
+                        valueColor: const AlwaysStoppedAnimation(Colors.white),
+                      ),
+                    )
+                  ],
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: lightgrey, width: 2),
+                  ),
+                  child: TextButton.icon(
+                      onPressed: null,
+                      icon: const Icon(CupertinoIcons.money_dollar,
+                          color: Colors.white, size: 20),
+                      label: normalText(
+                          color: Colors.white, size: 10, text: "2000")),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 10),
+            Container(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "Điểm: 1000",
+                style: TextStyle(
+                  fontSize: 17,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10, bottom: 30),
+              alignment: Alignment.center,
+              width: 400,
+              height: 160,
+              decoration: BoxDecoration(
+                  color: Colors.lightBlue,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    new BoxShadow(
+                      color: Colors.lightBlue,
+                      offset: Offset(1.0, 1.0),
+                      blurRadius: 4.0,
+                      spreadRadius: 1.0,
+                    )
+                  ]),
+              child: Text(
+                "Câu Hỏi",
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            // Align(
+            //     alignment: Alignment.centerLeft,
+            //     child: normalText(
+            //         color: lightgrey,
+            //         size: 18,
+            //         text: "Câu hỏi ${currentQuestionIndex + 1}từ 1 đến 50")),
+            // const SizedBox(height: 20),
+            // normalText(
+            //     color: Colors.white, size: 18, text: "what is your name?"),
+            // const SizedBox(height: 20),
+
+            ListView.builder(
+                shrinkWrap: true,
+                itemCount: 4,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 20),
+                    alignment: Alignment.center,
+                    width: size.width - 100,
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: headingText(color: blue, size: 18, text: "Continue"),
+                  );
+                }),
+            Container(
+              padding: const EdgeInsets.only(top: 10, right: 15, left: 15),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      border: Border.all(color: lightgrey, width: 2),
-                    ),
-                    child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context); //trả về gd gameover
-                        },
-                        icon: const Icon(
-                          CupertinoIcons.xmark,
-                          color: Colors.white,
-                          size: 25,
-                        )),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => QuizApp()));
+                    },
+                    icon: Icon(Icons.attach_money),
+                    color: Colors.red,
                   ),
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      normalText(
-                          color: Colors.white, size: 22, text: "$seconds"),
-                      SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: CircularProgressIndicator(
-                          value: seconds / 60,
-                          valueColor:
-                              const AlwaysStoppedAnimation(Colors.white),
-                        ),
-                      )
-                    ],
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => QuizApp()));
+                    },
+                    icon: Icon(Icons.next_plan),
+                    color: Colors.red,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: lightgrey, width: 2),
-                    ),
-                    child: TextButton.icon(
-                        onPressed: null,
-                        icon: const Icon(CupertinoIcons.heart_fill,
-                            color: Colors.white, size: 18),
-                        label: normalText(
-                            color: Colors.white, size: 14, text: "2000")),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => QuizApp()));
+                    },
+                    icon: Icon(Icons.call_end),
+                    color: Colors.red,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => QuizApp()));
+                    },
+                    icon: Icon(Icons.analytics),
+                    color: Colors.red,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => QuizApp()));
+                    },
+                    icon: Icon(Icons.two_k_plus),
+                    color: Colors.red,
                   ),
                 ],
               ),
-              SizedBox(
-                  // height: 20,
-                  ),
-              Image.asset(
-                "icons/logo_2.png",
-                width: 100,
-              ),
-              const SizedBox(height: 20),
-              Align(
-                  alignment: Alignment.centerLeft,
-                  child: normalText(
-                      color: lightgrey,
-                      size: 18,
-                      text: "Câu hỏi ${currentQuestionIndex + 1}từ 1 đến 50")),
-              const SizedBox(height: 20),
-              normalText(
-                  color: Colors.white, size: 18, text: "what is your name?"),
-              const SizedBox(height: 20),
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 4,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      margin: const EdgeInsets.only(bottom: 20),
-                      alignment: Alignment.center,
-                      width: size.width - 100,
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child:
-                          headingText(color: blue, size: 18, text: "Continue"),
-                    );
-                  }),
-              Container(
-                padding: const EdgeInsets.only(top: 10, right: 15, left: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => QuizApp()));
-                      },
-                      icon: Icon(Icons.attach_money),
-                      color: Colors.red,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => QuizApp()));
-                      },
-                      icon: Icon(Icons.next_plan),
-                      color: Colors.red,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => QuizApp()));
-                      },
-                      icon: Icon(Icons.call_end),
-                      color: Colors.red,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => QuizApp()));
-                      },
-                      icon: Icon(Icons.analytics),
-                      color: Colors.red,
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => QuizApp()));
-                      },
-                      icon: Icon(Icons.two_k_plus),
-                      color: Colors.red,
-                    ),
-                  ],
-                ),
-              ),
-            ]),
-          ),
+            ),
+          ]),
         ),
       ),
     );
