@@ -1,9 +1,14 @@
+import 'dart:convert';
 import 'dart:developer';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/View/login.dart';
 import 'package:vantan/giaodienchoi.dart';
+import 'package:vantan/trang_chu.dart';
+
+import '../Service/auth.dart';
+import '../Service/global.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -13,6 +18,57 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class RegisterScreenState extends State<RegisterScreen> {
+  String email = '';
+  String username = '';
+  String password = '';
+  String repassword = '';
+
+  createAccountPressed() async {
+    bool emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email);
+    if (emailValid) {
+      http.Response response =
+          await AuthService.register(username, email, password, repassword);
+      Map responseMap = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (BuildContext context) => TrangChu(),
+        //     ));
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Đăng ký'),
+                content: Text('Chúc mừng bạn đã đăng ký thành công'),
+                actions: [
+                  TextButton(
+                      onPressed: () => Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                          (Route<dynamic> route) => false),
+                      child: Text('OK'))
+                ],
+              );
+            });
+      } else {
+        if (password.length < 8) {
+          errorSnackBar(context, 'Mật khẩu ít nhất 8 ký tự');
+        } else {
+          if (password != repassword) {
+            errorSnackBar(context, 'Xác nhận mật khẩu không khớp');
+          } else
+            errorSnackBar(context, 'Email hoặc tài khoản đã tồn tại');
+        }
+      }
+    } else {
+      errorSnackBar(context, 'Sai định dạng email');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +107,11 @@ class RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(10),
-                child: const TextField(
+                padding: EdgeInsets.all(10),
+                child: TextField(
+                  onChanged: (value) {
+                    email = value;
+                  },
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -78,9 +137,12 @@ class RegisterScreenState extends State<RegisterScreen> {
               //   ),
               // ),
               Container(
-                padding: const EdgeInsets.all(10),
-                child: const TextField(
+                padding: EdgeInsets.all(10),
+                child: TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black),
+                  onChanged: (value) {
+                    username = value;
+                  },
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -92,10 +154,13 @@ class RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(10),
-                child: const TextField(
+                padding: EdgeInsets.all(10),
+                child: TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black),
                   obscureText: true,
+                  onChanged: (value) {
+                    password = value;
+                  },
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -107,10 +172,13 @@ class RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(10),
-                child: const TextField(
+                padding: EdgeInsets.all(10),
+                child: TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black),
                   obscureText: true,
+                  onChanged: (value) {
+                    repassword = value;
+                  },
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -138,27 +206,28 @@ class RegisterScreenState extends State<RegisterScreen> {
                 padding: const EdgeInsets.all(10),
                 child: ElevatedButton(
                   onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: Text('Đăng ký'),
-                            content:
-                                Text('Chúc mừng bạn đã đăng ký thành công'),
-                            actions: [
-                              TextButton(
-                                  onPressed: () =>
-                                      Navigator.of(context).pushAndRemoveUntil(
-                                          MaterialPageRoute(
-                                            builder: (context) => Login(),
-                                          ),
-                                          (Route<dynamic> route) => false),
-                                  child: Text('OK'))
-                            ],
-                          );
-                        });
+                    return createAccountPressed();
+                    // showDialog(
+                    //     context: context,
+                    //     builder: (context) {
+                    //       return AlertDialog(
+                    //         title: Text('Đăng ký'),
+                    //         content:
+                    //             Text('Chúc mừng bạn đã đăng ký thành công'),
+                    //         actions: [
+                    //           TextButton(
+                    //               onPressed: () => createAccountPressed(),
+                    //               // Navigator.of(context).pushAndRemoveUntil(
+                    //               //     MaterialPageRoute(
+                    //               //       builder: (context) => TrangChu(),
+                    //               //     ),
+                    //               //     (Route<dynamic> route) => false),
+                    //               child: Text('OK'))
+                    //         ],
+                    //       );
+                    //     });
                   },
-                  child: const Text(
+                  child: Text(
                     'Đăng ký',
                     style: TextStyle(
                       fontSize: 20,
