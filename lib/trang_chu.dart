@@ -117,7 +117,7 @@ class TrangChu extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
-                            builder: (context) => Login(),
+                            builder: (context) => LoginScreen(),
                           ),
                           (Route<dynamic> route) => false);
                       // giai thich remove may het may trang trc r moi push cai nay len

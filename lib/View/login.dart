@@ -1,11 +1,51 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:vantan/Service/auth.dart';
 import 'package:vantan/giaodienchoi.dart';
-
+import 'package:http/http.dart' as http;
 import 'package:vantan/quenmatkhau.dart';
 import 'package:vantan/View/register.dart';
 import 'package:vantan/trang_chu.dart';
+import '../Service/global.dart';
 
-class Login extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return LoginScreenState();
+  }
+}
+
+class LoginScreenState extends State<LoginScreen> {
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  loginPressed() async {
+    if (username.text.isNotEmpty && password.text.isNotEmpty) {
+      http.Response response =
+          await AuthService.login(username.text, password.text);
+      Map responseMap = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => TrangChu(),
+            ));
+      } else {
+        errorSnackBar(context, responseMap.values.first[0]);
+      }
+    } else {
+      errorSnackBar(context, 'Vui lòng nhập đầy đử thông tin');
+    }
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    username.dispose();
+    password.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,8 +66,8 @@ class Login extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.only(top: 50),
-                child: const Text(
+                padding: EdgeInsets.only(top: 50),
+                child: Text(
                   'Đăng Nhập Tài Khoản',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -36,9 +76,10 @@ class Login extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(15),
-                child: const TextField(
+                padding: EdgeInsets.all(15),
+                child: TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black),
+                  controller: username,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -50,10 +91,11 @@ class Login extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(15),
-                child: const TextField(
+                padding: EdgeInsets.all(15),
+                child: TextField(
                   style: TextStyle(fontSize: 18, color: Colors.black),
                   obscureText: true,
+                  controller: password,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
@@ -75,25 +117,26 @@ class Login extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 40, bottom: 12),
                 child: ElevatedButton(
                   onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            title: Text('Đăng Nhập'),
-                            content:
-                                Text('Chúc mừng bạn đã dăng nhập thành công'),
-                            actions: [
-                              TextButton(
-                                  onPressed: () =>
-                                      Navigator.of(context).pushAndRemoveUntil(
-                                          MaterialPageRoute(
-                                            builder: (context) => TrangChu(),
-                                          ),
-                                          (Route<dynamic> route) => false),
-                                  child: Text('OK'))
-                            ],
-                          );
-                        });
+                    return loginPressed();
+                    // showDialog(
+                    //     context: context,
+                    //     builder: (context) {
+                    //       return AlertDialog(
+                    //         title: Text('Đăng Nhập'),
+                    //         content:
+                    //             Text('Chúc mừng bạn đã dăng nhập thành công'),
+                    //         actions: [
+                    //           TextButton(
+                    //               onPressed: () =>
+                    //                   Navigator.of(context).pushAndRemoveUntil(
+                    //                       MaterialPageRoute(
+                    //                         builder: (context) => TrangChu(),
+                    //                       ),
+                    //                       (Route<dynamic> route) => false),
+                    //               child: Text('OK'))
+                    //         ],
+                    //       );
+                    //     });
                   },
                   child: const Text(
                     'Đăng nhập',
@@ -178,7 +221,7 @@ class Login extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Register(),
+                            builder: (context) => RegisterScreen(),
                           ),
                         );
                       },
