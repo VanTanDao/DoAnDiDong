@@ -200,50 +200,96 @@ class _QuizScreenState extends State<QuizScreen> {
                     child: headingText(color: blue, size: 18, text: "Continue"),
                   );
                 }),
+            // Container(
+            //   padding: const EdgeInsets.only(top: 10, right: 15, left: 15),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       IconButton(
+            //         onPressed: () {
+            //           Navigator.push(context,
+            //               MaterialPageRoute(builder: (context) => QuizApp()));
+            //         },
+            //         icon: Icon(Icons.attach_money),
+            //         color: Colors.red,
+            //       ),
+            //       IconButton(
+            //         onPressed: () {
+            //           Navigator.push(context,
+            //               MaterialPageRoute(builder: (context) => QuizApp()));
+            //         },
+            //         icon: Icon(Icons.next_plan),
+            //         color: Colors.red,
+            //       ),
+            //       IconButton(
+            //         onPressed: () {
+            //           Navigator.push(context,
+            //               MaterialPageRoute(builder: (context) => QuizApp()));
+            //         },
+            //         icon: Icon(Icons.call_end),
+            //         color: Colors.red,
+            //       ),
+            //       IconButton(
+            //         onPressed: () {
+            //           Navigator.push(context,
+            //               MaterialPageRoute(builder: (context) => QuizApp()));
+            //         },
+            //         icon: Icon(Icons.analytics),
+            //         color: Colors.red,
+            //       ),
+            //       IconButton(
+            //         onPressed: () {
+            //           Navigator.push(context,
+            //               MaterialPageRoute(builder: (context) => QuizApp()));
+            //         },
+            //         icon: Icon(Icons.two_k_plus),
+            //         color: Colors.red,
+            //       ),
+            //     ],
+            //   ),
+            // ),
             Container(
-              padding: const EdgeInsets.only(top: 10, right: 15, left: 15),
+              padding: EdgeInsets.only(top: 10, right: 15, left: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => QuizApp()));
-                    },
-                    icon: Icon(Icons.attach_money),
-                    color: Colors.red,
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      '50:50',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => QuizApp()));
-                    },
-                    icon: Icon(Icons.next_plan),
-                    color: Colors.red,
+                    onPressed: () {},
+                    icon: Icon(Icons.people_alt),
+                    color: Colors.white,
+                    iconSize: 35,
                   ),
                   IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => QuizApp()));
-                    },
-                    icon: Icon(Icons.call_end),
-                    color: Colors.red,
+                    onPressed: () {},
+                    icon: Icon(Icons.phone_callback),
+                    color: Colors.white,
+                    iconSize: 35,
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Image(
+                      image: AssetImage('images/swap-removebg-preview.png'),
+                      width: 35,
+                      height: 35,
+                      color: Colors.white,
+                    ),
                   ),
                   IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => QuizApp()));
-                    },
-                    icon: Icon(Icons.analytics),
-                    color: Colors.red,
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => QuizApp()));
-                    },
-                    icon: Icon(Icons.two_k_plus),
-                    color: Colors.red,
+                    onPressed: () {},
+                    icon: Icon(Icons.attach_money_outlined),
+                    color: Colors.white,
+                    iconSize: 35,
                   ),
                 ],
               ),

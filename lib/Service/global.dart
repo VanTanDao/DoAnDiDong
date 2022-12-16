@@ -6,7 +6,10 @@ Map<String, String> headers = {"Content-Type": "application/json"};
 
 errorSnackBar(BuildContext context, String text) {
   ScaffoldMessenger.of(context).showSnackBar((SnackBar(
-    content: Text(text),
+    content: Text(
+      text,
+      style: TextStyle(color: Colors.red),
+    ),
     backgroundColor: Colors.blue,
     duration: Duration(seconds: 2),
   )));
