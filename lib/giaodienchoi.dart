@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/Quiz/quiztions_sceen.dart';
+import 'package:vantan/Quiz/text_style.dart';
 import 'package:vantan/trang_chu.dart';
 
 class Giaodienchoi extends StatelessWidget {
@@ -52,6 +53,21 @@ class Giaodienchoi extends StatelessWidget {
                       fontSize: 25),
                 ),
               ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(16),
+              //     border: Border.all(color: Colors.black, width: 2),
+              //   ),
+              //   child: TextButton.icon(
+              //       onPressed: null,
+              //       icon: const Icon(CupertinoIcons.money_dollar,
+              //           color: Colors.white, size: 20),
+              //       label: normalText(
+              //         color: Colors.white,
+              //         size: 10,
+              //         text: "2000",
+              //       )),
+              // ),
               Padding(
                 padding: const EdgeInsets.only(top: 25, bottom: 25),
                 child: ElevatedButton(
@@ -113,7 +129,7 @@ class Giaodienchoi extends StatelessWidget {
                         });
                   },
                   child: const Text(
-                    'Âm Nhạc',
+                    'Thể Thao',
                     style: TextStyle(
                       fontSize: 50,
                       color: Color.fromARGB(255, 242, 243, 244),
@@ -146,7 +162,7 @@ class Giaodienchoi extends StatelessWidget {
                         });
                   },
                   child: const Text(
-                    'Âm Nhạc',
+                    'Giải trí',
                     style: TextStyle(
                       fontSize: 50,
                       color: Color.fromARGB(255, 242, 243, 244),
@@ -180,7 +196,7 @@ class Giaodienchoi extends StatelessWidget {
                         });
                   },
                   child: const Text(
-                    'Âm Nhạc',
+                    'Toán Học',
                     style: TextStyle(
                       fontSize: 50,
                       color: Color.fromARGB(255, 242, 243, 244),
