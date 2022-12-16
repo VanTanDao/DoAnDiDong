@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: LoginScreen(), //fix 1
+      home: QuizScreen(), //fix 1
     );
   }
 }

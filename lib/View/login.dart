@@ -31,7 +31,7 @@ class LoginScreenState extends State<LoginScreen> {
               builder: (BuildContext context) => TrangChu(),
             ));
       } else {
-        errorSnackBar(context, responseMap.values.first[0]);
+        errorSnackBar(context, responseMap.values.toString());
       }
     } else {
       errorSnackBar(context, 'Vui lòng nhập đầy đử thông tin');
