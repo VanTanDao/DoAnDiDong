@@ -115,7 +115,6 @@ class _QuizScreenState extends State<QuizScreen> {
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   var data = snapshot.data["question"];
-                  indexanswer = data[currentQuestionIndex]["correct_answer"];
                   if (isLoaded == false) {
                     optionsList
                         .add(data[currentQuestionIndex]["incorrect_answer_1"]);
@@ -440,6 +439,8 @@ class _QuizScreenState extends State<QuizScreen> {
                             ),
                             IconButton(
                               onPressed: () {
+                                indexanswer = data[currentQuestionIndex]
+                                    ["correct_answer"];
                                 setState(() {
                                   if (sodu >= muadapan) {
                                     for (int i = 0;
@@ -453,8 +454,9 @@ class _QuizScreenState extends State<QuizScreen> {
                                     }
                                     optionsColor[indexcorrect] =
                                         AppColor.yellow1;
-                                    muadapan += 100;
+
                                     sodu -= muadapan;
+                                    muadapan += 100;
                                   } else {
                                     errorSnackBar(
                                         context, 'Số dư bạn không đủ');
