@@ -5,9 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:vantan/Quiz/colors.dart';
 import 'package:vantan/Quiz/game_over.dart';
 import 'package:vantan/Quiz/text_style.dart';
+import 'package:vantan/Service/global.dart';
 import 'package:vantan/Service/quiztions.dart';
 import 'package:vantan/giaodienchoi.dart';
 import 'package:vantan/trang_chu.dart';
+
+import 'app_colors.dart';
+import 'audience_help.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({Key? key}) : super(key: key);
@@ -23,6 +27,15 @@ class _QuizScreenState extends State<QuizScreen> {
   late Future quiz;
 
   int points = 0;
+
+  int sodapan = 4;
+  int loaidapan = 1;
+  String indexanswer = '';
+  int indexcorrect = 0;
+  int ykien = 1;
+  int sodu = 2000;
+  int muadapan = 100;
+  int swap = 1;
 
   var isLoaded = false;
 
@@ -102,7 +115,7 @@ class _QuizScreenState extends State<QuizScreen> {
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   var data = snapshot.data["question"];
-
+                  indexanswer = data[currentQuestionIndex]["correct_answer"];
                   if (isLoaded == false) {
                     optionsList
                         .add(data[currentQuestionIndex]["incorrect_answer_1"]);
@@ -196,7 +209,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                 label: normalText(
                                     color: Colors.white,
                                     size: 10,
-                                    text: "2000")),
+                                    text: sodu.toString())),
                           ),
                         ],
                       ),
@@ -319,55 +332,154 @@ class _QuizScreenState extends State<QuizScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (loaidapan == 1) {
+                                    sodapan = 2;
+
+                                    for (int i = 0;
+                                        i < optionsList.length;
+                                        i++) {
+                                      if (optionsList[i].toString() ==
+                                          indexanswer.toString()) {
+                                        indexcorrect = i;
+                                        break;
+                                      }
+                                    }
+                                    if (indexcorrect == 0 ||
+                                        indexcorrect == 1) {
+                                      optionsList.removeAt(2);
+                                      optionsList.removeAt(2);
+                                      optionsList.add('');
+                                      optionsList.add('');
+                                    } else {
+                                      optionsList.removeAt(0);
+                                      optionsList.removeAt(0);
+                                      optionsList.add('');
+                                      optionsList.add('');
+                                    }
+
+                                    loaidapan = 0;
+                                  } else {
+                                    errorSnackBar(
+                                        context, 'Bạn đã dùng hết lượt');
+                                  }
+                                });
+                              },
+                              child: Text(
+                                '50:50',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
                             IconButton(
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => QuizApp()));
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      content: Text(
+                                        '',
+                                        style: TextStyle(
+                                          fontSize: 50,
+                                        ),
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            child: Text('OK')),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              icon: Icon(Icons.phone_callback),
+                              color: Colors.white,
+                              iconSize: 30,
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (ykien == 1 && sodapan == 4) {
+                                    showDialog<dynamic>(
+                                      context: context,
+                                      builder: (BuildContext context) => Center(
+                                        child: HelpAudience(
+                                          indexCorrect: sodapan,
+                                          isTapFifty: false,
+                                        ),
+                                      ),
+                                    );
+                                    ykien = 0;
+                                  } else if (ykien == 1 && sodapan == 2) {
+                                    showDialog<dynamic>(
+                                      context: context,
+                                      builder: (BuildContext context) => Center(
+                                        child: HelpAudience(
+                                          indexCorrect: sodapan,
+                                          isTapFifty: true,
+                                        ),
+                                      ),
+                                    );
+                                    ykien = 0;
+                                  } else {
+                                    errorSnackBar(
+                                        context, 'Bạn đã dùng hết lượt');
+                                  }
+                                });
+                              },
+                              icon: Icon(Icons.people_alt),
+                              color: Colors.white,
+                              iconSize: 30,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (swap == 1) {
+                                    gotoNextQuestion();
+                                    swap = 0;
+                                  } else {
+                                    errorSnackBar(
+                                        context, 'Bạn đã dùng hết lượt');
+                                  }
+                                });
+                              },
+                              child: Image(
+                                image: AssetImage('images/swap.png'),
+                                color: Colors.white,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (sodu >= muadapan) {
+                                    for (int i = 0;
+                                        i < optionsList.length;
+                                        i++) {
+                                      if (optionsList[i].toString() ==
+                                          indexanswer.toString()) {
+                                        indexcorrect = i;
+                                        break;
+                                      }
+                                    }
+                                    optionsColor[indexcorrect] =
+                                        AppColor.yellow1;
+                                    muadapan += 100;
+                                    sodu -= muadapan;
+                                  } else {
+                                    errorSnackBar(
+                                        context, 'Số dư bạn không đủ');
+                                  }
+                                });
                               },
                               icon: Icon(Icons.attach_money),
-                              color: Colors.red,
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => QuizApp()));
-                              },
-                              icon: Icon(Icons.next_plan),
-                              color: Colors.red,
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => QuizApp()));
-                              },
-                              icon: Icon(Icons.call_end),
-                              color: Colors.red,
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => QuizApp()));
-                              },
-                              icon: Icon(Icons.analytics),
-                              color: Colors.red,
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => QuizApp()));
-                              },
-                              icon: Icon(Icons.two_k_plus),
-                              color: Colors.red,
+                              color: Colors.white,
+                              iconSize: 30,
                             ),
                           ],
                         ),
