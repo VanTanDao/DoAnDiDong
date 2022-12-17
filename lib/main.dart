@@ -1,7 +1,7 @@
 import 'package:vantan/Quiz/game_over.dart';
 import 'package:vantan/Quiz/quiztions_sceen.dart';
 import 'package:vantan/doimatkhau.dart';
-import 'package:vantan/giaodienchoi.dart';
+import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:vantan/View/login.dart';
 import 'package:vantan/quenmatkhau.dart';
 import 'package:vantan/View/register.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.indigo),
-      home: QuizScreen(), //fix 1
+      home: GiaodienchoiScreen(), //fix 1
     );
   }
 }

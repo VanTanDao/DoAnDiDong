@@ -2,7 +2,7 @@ import 'dart:ffi';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:vantan/View/login.dart';
-import 'package:vantan/giaodienchoi.dart';
+import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:vantan/thongtinchitiet.dart';
 import 'package:vantan/xep_hang.dart';
 
@@ -32,8 +32,10 @@ class TrangChu extends StatelessWidget {
               width: 300,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Giaodienchoi()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => GiaodienchoiScreen()));
                 },
                 // onPressed: () => Navigator.of(context).pushAndRemoveUntil(
                 //     MaterialPageRoute(
