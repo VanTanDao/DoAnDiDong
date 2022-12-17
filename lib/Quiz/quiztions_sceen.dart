@@ -6,7 +6,7 @@ import 'package:vantan/Quiz/colors.dart';
 import 'package:vantan/Quiz/game_over.dart';
 import 'package:vantan/Quiz/text_style.dart';
 import 'package:vantan/Service/quiztions.dart';
-import 'package:vantan/giaodienchoi.dart';
+import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:vantan/trang_chu.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -212,23 +212,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           ),
                         ),
                       ),
-                      // Container(
-                      //   margin: EdgeInsets.only(top: 10, bottom: 30),
-                      //   alignment: Alignment.center,
-                      //   width: 400,
-                      //   height: 160,
-                      //   decoration: BoxDecoration(
-                      //       color: Colors.lightBlue,
-                      //       borderRadius: BorderRadius.circular(16),
-                      //       boxShadow: [
-                      //         new BoxShadow(
-                      //           color: Colors.lightBlue,
-                      //           offset: Offset(1.0, 1.0),
-                      //           blurRadius: 4.0,
-                      //           spreadRadius: 1.0,
-                      //         )
-                      //       ]),
-                      //   child:
+
                       Align(
                           alignment: Alignment.centerLeft,
                           child: normalText(

@@ -3,7 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vantan/doimatkhau.dart';
-import 'package:vantan/giaodienchoi.dart';
+import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:vantan/trang_chu.dart';
 
 class ThongTinChiTiet extends StatefulWidget {

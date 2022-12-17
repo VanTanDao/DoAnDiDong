@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/View/login.dart';
-import 'package:vantan/giaodienchoi.dart';
+import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:vantan/trang_chu.dart';
 
 import '../Service/auth.dart';

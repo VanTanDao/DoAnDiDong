@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:vantan/Service/auth.dart';
-import 'package:vantan/giaodienchoi.dart';
+import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:http/http.dart' as http;
 import 'package:vantan/quenmatkhau.dart';
 import 'package:vantan/View/register.dart';
