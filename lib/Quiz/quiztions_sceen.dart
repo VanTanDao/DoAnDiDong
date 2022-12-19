@@ -6,6 +6,7 @@ import 'package:vantan/Quiz/colors.dart';
 import 'package:vantan/Quiz/game_over.dart';
 import 'package:vantan/Quiz/text_style.dart';
 import 'package:vantan/Service/global.dart';
+import 'package:vantan/Service/linhvucobject.dart';
 import 'package:vantan/Service/quiztions.dart';
 import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:vantan/trang_chu.dart';
@@ -14,7 +15,8 @@ import 'app_colors.dart';
 import 'audience_help.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({Key? key}) : super(key: key);
+  int category;
+  QuizScreen({Key? key, required this.category}) : super(key: key);
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -52,7 +54,7 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   void initState() {
     super.initState();
-    quiz = getQuiz();
+    quiz = getQuiz(this.widget.category);
     startTimer();
   }
 
