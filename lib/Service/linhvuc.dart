@@ -1,17 +1,26 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
+import 'package:vantan/Quiz/giaodienchoi.dart';
+import 'package:vantan/Service/linhvucobject.dart';
 import 'package:http/http.dart' as http;
 
-var link = "http://127.0.0.1:8000/api/auth/linhvuc";
-
-getLinhvuc() async {
-  var res = await http.get(Uri.parse(link));
-  // print("data is loaded1111");
-  if (res.statusCode == 200) {
-    var data = jsonDecode(res.body.toString());
-    print("data is loaded");
-    return data;
+class linhvucProvider {
+  static List<PackageQuestion> parsePackage(String responseBody) {
+    final parsed = jsonDecode(responseBody);
+    final data = parsed["linhvuc"];
+    print(data);
+    data.cast<Map<String, dynamic>>();
+    return data
+        .map<PackageQuestion>((e) => PackageQuestion.fromJson(e))
+        .toList();
   }
-  return res;
+
+  static Future<List<PackageQuestion>> fetchPackage() async {
+    final response =
+        await http.get(Uri.parse('http://10.0.2.2:8000/api/auth/linhvuc'));
+    print(response);
+    return parsePackage(response.body);
+  }
+
+  static getAllContacts() {}
 }
