@@ -28,7 +28,7 @@ class _BuyBrainsState extends State<BuyBrains> {
       body: Container(
         decoration: BoxDecoration(
           image: const DecorationImage(
-            image: AssetImage('images/background.png'),
+            image: AssetImage('images/nen.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -39,11 +39,11 @@ class _BuyBrainsState extends State<BuyBrains> {
                 padding: const EdgeInsets.only(right: 10.0, left: 10.0),
                 child: ListView(
                   children: <Widget>[
-                    _field('80', '20.000 VNĐ', 'images/coin.png'),
-                    _field('500', '150.000 VNĐ', 'images/coin.png'),
-                    _field('1200', '420.000 VNĐ', 'images/coin.png'),
-                    _field('2500', '700.000 VNĐ', 'images/coin.png'),
-                    _field('6500', '1.800.000 VNĐ', 'images/coin.png'),
+                    _field('80', '20.000', 'images/coin.png'),
+                    _field('500', '150.000', 'images/coin.png'),
+                    _field('1200', '420.000', 'images/coin.png'),
+                    _field('2500', '700.000', 'images/coin.png'),
+                    _field('6500', '1.800.000', 'images/coin.png'),
                   ],
                 ),
               ),
@@ -53,15 +53,14 @@ class _BuyBrainsState extends State<BuyBrains> {
       ),
     );
   }
-
   _field(String brain, String field, String image) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Row(
         children: [
           Container(
-            height: 90,
-            width: MediaQuery.of(context).size.width * 0.85,
+            height: 100,
+            width: MediaQuery.of(context).size.width * 0.80,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: Color.fromARGB(151, 128, 138, 145),
@@ -73,17 +72,17 @@ class _BuyBrainsState extends State<BuyBrains> {
               child: ListTile(
                 leading: Image(
                   image: AssetImage(image),
-                  height: 45,
-                  width: 45,
+                  height: 50,
+                  width: 50,
                 ),
                 title: Text(
                   textAlign: TextAlign.left,
                   brain,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.bold,
                     fontSize: 30,
-                    letterSpacing: 1,
+                    letterSpacing: 2,
                   ),
                 ),
                 trailing: TextButton(
