@@ -49,7 +49,22 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 4, 172, 249),
+        actions: [
+           IconButton(onPressed: () {
+            showAboutDialog(context: context,
+            applicationName:"HƯỚNG DẪN CHƠI",
+            children: [
+              Text("1. Người chơi có duy nhất 1 lượt chơi."),
+              Text("2. Mỗi lượt chơi sẽ gồm 4 đáp án cho mỗi câu hỏi."),
+              Text("3. Người chơi sẽ có 5 sự trợ giúp ở mỗi lượt chơi."),
+              Text("4. Mỗi sự trợ giúp chỉ được sử dụng 1 lần cho 1 lượt chơi"),
+              Text("5. Khi trả lơi sai sẽ kết thúc lượt chơi")
+            ],);
+           }, icon: Icon(Icons.integration_instructions_outlined)),
+        ],
+      ),
       body: Container(
         color: Color.fromARGB(255, 40, 156, 240),
         child: SingleChildScrollView(
