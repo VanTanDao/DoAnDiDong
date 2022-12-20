@@ -1,34 +1,22 @@
-// import 'package:doan_didong/screen/transaction/transaction.dart';
-// import 'package:doan_didong/screen/transaction/transaction_history.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/trang_chu.dart';
 
-
 class BuyBrains extends StatefulWidget {
-  const BuyBrains({super.key});
-
+  // BuyBrains({super.key});
   @override
-  State<BuyBrains> createState() => _BuyBrainsState();
+  State<BuyBrains> createState() {
+    return BuyBrainsState();
+  }
 }
 
-class _BuyBrainsState extends State<BuyBrains> {
+class BuyBrainsState extends State<BuyBrains> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   len
-      //   title: const Text('Nạp điểm'),
-      //   bottom: const TabBar(
-      //     tabs: <Tab>[
-      //       Tab(text: 'Nạp điểm'),
-      //       Tab(text: 'Lịch sử giao dịch'),
-      //     ],
-      //   ),
-      // ),
       body: Container(
         decoration: BoxDecoration(
-          image: const DecorationImage(
+          image: DecorationImage(
             image: AssetImage('images/nen.png'),
             fit: BoxFit.cover,
           ),
@@ -37,7 +25,7 @@ class _BuyBrainsState extends State<BuyBrains> {
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(right: 10.0, left: 10.0),
+                padding: EdgeInsets.only(right: 10.0, left: 10.0),
                 child: ListView(
                   children: <Widget>[
                     _field('80', '20.000', 'images/coin.png'),
@@ -54,6 +42,7 @@ class _BuyBrainsState extends State<BuyBrains> {
       ),
     );
   }
+
   _field(String brain, String field, String image) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -89,10 +78,10 @@ class _BuyBrainsState extends State<BuyBrains> {
                 trailing: TextButton(
                   onPressed: () {
                     Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => TrangChu(),
-                      )
-                    );
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TrangChu(),
+                        ));
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -111,7 +100,7 @@ class _BuyBrainsState extends State<BuyBrains> {
                       children: [
                         Text(
                           field,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w700,
                             fontSize: 18,
@@ -120,7 +109,7 @@ class _BuyBrainsState extends State<BuyBrains> {
                         ),
                         Text(
                           'đ',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 15,
                             decoration: TextDecoration.underline,
                             decorationColor: Colors.white,

@@ -26,45 +26,54 @@ class RegisterScreenState extends State<RegisterScreen> {
     bool emailValid = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email.text);
-    if (emailValid) {
-      http.Response response = await AuthService.register(
-          username.text, email.text, password.text, repassword.text);
-      Map responseMap = jsonDecode(response.body);
-      if (response.statusCode == 200) {
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (BuildContext context) => TrangChu(),
-        //     ));
-        showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text('Đăng ký'),
-                content: Text('Chúc mừng bạn đã đăng ký thành công'),
-                actions: [
-                  TextButton(
-                      onPressed: () => Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(
-                            builder: (context) => LoginScreen(),
-                          ),
-                          (Route<dynamic> route) => false),
-                      child: Text('OK'))
-                ],
-              );
-            });
-      } else {
-        if (password.text.length < 8) {
-          errorSnackBar(context, 'Mật khẩu ít nhất 8 ký tự');
-        } else {
-          if (password.text != repassword.text) {
-            errorSnackBar(context, 'Xác nhận mật khẩu không khớp');
-          } else
-            errorSnackBar(context, 'Email hoặc tài khoản đã tồn tại');
-        }
-      }
+
+    if (username.text == '' ||
+        email.text == '' ||
+        repassword.text == '' ||
+        password.text == '') {
+      errorSnackBar(context, 'Vui lòng điền đầy đủ thông tin');
     } else {
-      errorSnackBar(context, 'Sai định dạng email');
+      if (emailValid) {
+        http.Response response = await AuthService.register(
+            username.text, email.text, password.text, repassword.text);
+        Map responseMap = jsonDecode(response.body);
+        if (response.statusCode == 200) {
+          // Navigator.push(
+          //     context,
+          //     MaterialPageRoute(
+          //       builder: (BuildContext context) => TrangChu(),
+          //     ));
+          showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Đăng ký'),
+                  content: Text('Chúc mừng bạn đã đăng ký thành công'),
+                  actions: [
+                    TextButton(
+                        onPressed: () =>
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) => LoginScreen(),
+                                ),
+                                (Route<dynamic> route) => false),
+                        child: Text('OK'))
+                  ],
+                );
+              });
+        } else {
+          if (password.text.length < 8) {
+            errorSnackBar(context, 'Mật khẩu ít nhất 8 ký tự');
+          } else {
+            if (password.text != repassword.text) {
+              errorSnackBar(context, 'Xác nhận mật khẩu không khớp');
+            } else
+              errorSnackBar(context, 'Email hoặc tài khoản đã tồn tại');
+          }
+        }
+      } else {
+        errorSnackBar(context, 'Sai định dạng email');
+      }
     }
   }
 

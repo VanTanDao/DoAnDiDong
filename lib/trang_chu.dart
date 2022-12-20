@@ -1,6 +1,8 @@
 import 'dart:ffi';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:vantan/View/buycoin.dart';
 import 'package:vantan/View/login.dart';
 import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:vantan/thongtinchitiet.dart';
@@ -93,7 +95,7 @@ class TrangChu extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 child: const Text(
-                  'Xem điểm số',
+                  'Xem lịch sử',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -103,7 +105,10 @@ class TrangChu extends StatelessWidget {
               height: 50,
               width: 300,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BuyBrains()));
+                },
                 child: const Text(
                   'Nạp Credit',
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
