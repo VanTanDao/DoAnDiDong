@@ -99,11 +99,11 @@ class XepHang extends StatelessWidget {
                           style: TextStyle(color: Colors.white),
                         ),
                         Text(
-                          'Hạng 1',
+                          'Nguyễn Văn Anh Tuấn',
                           style: TextStyle(color: Colors.white),
                         ),
                         Text(
-                          'Hạng 1',
+                          '6000',
                           style: TextStyle(color: Colors.white),
                         ),
                       ],

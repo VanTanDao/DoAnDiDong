@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vantan/trang_chu.dart';
 
 class BuyBrains extends StatefulWidget {
-  // BuyBrains({super.key});
+  BuyBrains({super.key});
   @override
   State<BuyBrains> createState() {
     return BuyBrainsState();
@@ -28,11 +28,10 @@ class BuyBrainsState extends State<BuyBrains> {
                 padding: EdgeInsets.only(right: 10.0, left: 10.0),
                 child: ListView(
                   children: <Widget>[
-                    _field('80', '20.000', 'images/coin.png'),
-                    _field('500', '150.000', 'images/coin.png'),
-                    _field('1200', '420.000', 'images/coin.png'),
-                    _field('2500', '700.000', 'images/coin.png'),
-                    _field('6500', '1.800.000', 'images/coin.png'),
+                    _field('80', '20.000', 'images/coin.jpg'),
+                    _field('500', '150.000', 'images/coin.jpg'),
+                    _field('1200', '420.000', 'images/coin.jpg'),
+                    _field('2500', '700.000', 'images/coin.jpg'),
                   ],
                 ),
               ),
@@ -45,7 +44,8 @@ class BuyBrainsState extends State<BuyBrains> {
 
   _field(String brain, String field, String image) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      padding: EdgeInsets.only(top: 50, left: 30),
+      // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Row(
         children: [
           Container(
