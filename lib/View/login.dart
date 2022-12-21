@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:vantan/Service/auth.dart';
-import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:http/http.dart' as http;
 import 'package:vantan/quenmatkhau.dart';
 import 'package:vantan/View/register.dart';
 import 'package:vantan/trang_chu.dart';
 import '../Service/global.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -25,6 +25,16 @@ class LoginScreenState extends State<LoginScreen> {
           await AuthService.login(username.text, password.text);
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
+        final prefs = await SharedPreferences.getInstance();
+
+        var data = json.decode(response.body);
+        await prefs.setInt('id', data["user"]["id"]);
+        await prefs.setString('username', data["user"]["username"]);
+        await prefs.setString('email', data["user"]["email"]);
+        await prefs.setInt('diem', data["user"]["diem"]);
+        await prefs.setInt('sodu', data["user"]["sodu"]);
+        // final int? id = prefs.getInt('id');
+        // print(id);
         Navigator.push(
             context,
             MaterialPageRoute(
@@ -52,17 +62,22 @@ class LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 4, 172, 249),
         actions: [
-           IconButton(onPressed: () {
-            showAboutDialog(context: context,
-            applicationName:"HƯỚNG DẪN CHƠI",
-            children: [
-              Text("1. Người chơi có duy nhất 1 lượt chơi."),
-              Text("2. Mỗi lượt chơi sẽ gồm 4 đáp án cho mỗi câu hỏi."),
-              Text("3. Người chơi sẽ có 5 sự trợ giúp ở mỗi lượt chơi."),
-              Text("4. Mỗi sự trợ giúp chỉ được sử dụng 1 lần cho 1 lượt chơi"),
-              Text("5. Khi trả lơi sai sẽ kết thúc lượt chơi")
-            ],);
-           }, icon: Icon(Icons.integration_instructions_outlined)),
+          IconButton(
+              onPressed: () {
+                showAboutDialog(
+                  context: context,
+                  applicationName: "HƯỚNG DẪN CHƠI",
+                  children: [
+                    Text("1. Người chơi có duy nhất 1 lượt chơi."),
+                    Text("2. Mỗi lượt chơi sẽ gồm 4 đáp án cho mỗi câu hỏi."),
+                    Text("3. Người chơi sẽ có 5 sự trợ giúp ở mỗi lượt chơi."),
+                    Text(
+                        "4. Mỗi sự trợ giúp chỉ được sử dụng 1 lần cho 1 lượt chơi"),
+                    Text("5. Khi trả lơi sai sẽ kết thúc lượt chơi")
+                  ],
+                );
+              },
+              icon: Icon(Icons.integration_instructions_outlined)),
         ],
       ),
       body: Container(

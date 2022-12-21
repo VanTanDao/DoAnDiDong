@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vantan/doimatkhau.dart';
@@ -18,14 +17,24 @@ class ThongTinChiTietState extends State<ThongTinChiTiet> {
   TextEditingController txtTaiKhoan = TextEditingController();
   TextEditingController txtGamil = TextEditingController();
   TextEditingController txtPhone = TextEditingController();
+  int? id;
+  String? username;
+  String? email;
+  int? diem;
+  int? sodu;
+  void get() async {
+    final prefs = await SharedPreferences.getInstance();
+    id = prefs.getInt('id');
+    username = prefs.getString('username');
+    email = prefs.getString('email');
+    diem = prefs.getInt('diem');
+    sodu = prefs.getInt('sodu');
+  }
 
   @override
   void initState() {
     super.initState();
-    txtId.text = 'ID';
-    txtTaiKhoan.text = 'Tài Khoản';
-    txtGamil.text = 'Gmail';
-    txtPhone.text = '0123456789';
+    get();
   }
 
   @override
@@ -67,23 +76,11 @@ class ThongTinChiTietState extends State<ThongTinChiTiet> {
           Padding(
             padding: EdgeInsets.all(10),
             child: TextField(
-              controller: txtId,
-              readOnly: true,
-              decoration: InputDecoration(
-                labelText: 'ID ',
-                prefixIcon: Icon(Icons.perm_identity),
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: txtTaiKhoan,
               readOnly: true,
               decoration: InputDecoration(
                 labelText: 'Username',
-                prefixIcon: Icon(Icons.accessibility),
+                prefixText: username,
+                prefixIcon: Icon(Icons.person),
                 border: OutlineInputBorder(),
               ),
             ),
@@ -91,23 +88,35 @@ class ThongTinChiTietState extends State<ThongTinChiTiet> {
           Padding(
             padding: EdgeInsets.all(10),
             child: TextField(
-              controller: txtPhone,
               readOnly: true,
               decoration: InputDecoration(
-                labelText: 'Phone',
-                prefixIcon: Icon(Icons.phone),
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: txtGamil,
-              readOnly: true,
-              decoration: InputDecoration(
-                labelText: 'Gmail',
+                labelText: 'Email',
+                prefixText: email,
                 prefixIcon: Icon(Icons.email_outlined),
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              readOnly: true,
+              decoration: InputDecoration(
+                labelText: 'Điểm',
+                prefixText: diem.toString(),
+                prefixIcon: Icon(Icons.analytics_outlined),
+                border: OutlineInputBorder(),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              readOnly: true,
+              decoration: InputDecoration(
+                labelText: 'Số dư',
+                prefixText: sodu.toString(),
+                prefixIcon: Icon(Icons.attach_money_sharp),
                 border: OutlineInputBorder(),
               ),
             ),

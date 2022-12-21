@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:math';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:vantan/Service/global.dart';
+import 'package:vantan/Service/user.dart';
 
 class AuthService {
   //dang ky
@@ -33,4 +35,6 @@ class AuthService {
     print(body);
     return response;
   }
+
+  static Future<dynamic> getUs() async {}
 }
