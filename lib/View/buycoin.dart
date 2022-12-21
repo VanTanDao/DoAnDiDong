@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vantan/trang_chu.dart';
 
+import '../Service/user.dart';
+
 class BuyBrains extends StatefulWidget {
+  User? user;
   BuyBrains({super.key});
   @override
   State<BuyBrains> createState() {
@@ -80,7 +83,9 @@ class BuyBrainsState extends State<BuyBrains> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => TrangChu(),
+                          builder: (context) => TrangChu(
+                            user: this.widget.user,
+                          ),
                         ));
                   },
                   child: Container(

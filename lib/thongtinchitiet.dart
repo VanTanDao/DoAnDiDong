@@ -2,11 +2,14 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:vantan/Service/user.dart';
 import 'package:vantan/doimatkhau.dart';
 import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:vantan/trang_chu.dart';
 
 class ThongTinChiTiet extends StatefulWidget {
+  User? user;
+  ThongTinChiTiet({Key? key, required this.user}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return ThongTinChiTietState();
@@ -14,18 +17,9 @@ class ThongTinChiTiet extends StatefulWidget {
 }
 
 class ThongTinChiTietState extends State<ThongTinChiTiet> {
-  TextEditingController txtId = TextEditingController();
-  TextEditingController txtTaiKhoan = TextEditingController();
-  TextEditingController txtGamil = TextEditingController();
-  TextEditingController txtPhone = TextEditingController();
-
   @override
   void initState() {
     super.initState();
-    txtId.text = 'ID';
-    txtTaiKhoan.text = 'Tài Khoản';
-    txtGamil.text = 'Gmail';
-    txtPhone.text = '0123456789';
   }
 
   @override
@@ -67,10 +61,10 @@ class ThongTinChiTietState extends State<ThongTinChiTiet> {
           Padding(
             padding: EdgeInsets.all(10),
             child: TextField(
-              controller: txtId,
               readOnly: true,
               decoration: InputDecoration(
                 labelText: 'ID ',
+                hintText: '${this.widget.user!.id}',
                 prefixIcon: Icon(Icons.perm_identity),
                 border: OutlineInputBorder(),
               ),
@@ -79,10 +73,10 @@ class ThongTinChiTietState extends State<ThongTinChiTiet> {
           Padding(
             padding: EdgeInsets.all(10),
             child: TextField(
-              controller: txtTaiKhoan,
               readOnly: true,
               decoration: InputDecoration(
                 labelText: 'Username',
+                hintText: '${this.widget.user!.username}',
                 prefixIcon: Icon(Icons.accessibility),
                 border: OutlineInputBorder(),
               ),
@@ -91,22 +85,10 @@ class ThongTinChiTietState extends State<ThongTinChiTiet> {
           Padding(
             padding: EdgeInsets.all(10),
             child: TextField(
-              controller: txtPhone,
               readOnly: true,
               decoration: InputDecoration(
-                labelText: 'Phone',
-                prefixIcon: Icon(Icons.phone),
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: TextField(
-              controller: txtGamil,
-              readOnly: true,
-              decoration: InputDecoration(
-                labelText: 'Gmail',
+                labelText: 'Email',
+                hintText: '${this.widget.user!.email}',
                 prefixIcon: Icon(Icons.email_outlined),
                 border: OutlineInputBorder(),
               ),

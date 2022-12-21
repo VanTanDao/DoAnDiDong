@@ -8,7 +8,16 @@ import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:vantan/thongtinchitiet.dart';
 import 'package:vantan/xep_hang.dart';
 
-class TrangChu extends StatelessWidget {
+import 'Service/user.dart';
+
+class TrangChu extends StatefulWidget {
+  User? user;
+  TrangChu({Key? key, required this.user}) : super(key: key);
+  @override
+  State<TrangChu> createState() => _TrangChuState();
+}
+
+class _TrangChuState extends State<TrangChu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +46,9 @@ class TrangChu extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => GiaodienchoiScreen()));
+                          builder: (context) => GiaodienchoiScreen(
+                                user: this.widget.user,
+                              )));
                 },
                 // onPressed: () => Navigator.of(context).pushAndRemoveUntil(
                 //     MaterialPageRoute(
@@ -59,7 +70,9 @@ class TrangChu extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ThongTinChiTiet(),
+                      builder: (context) => ThongTinChiTiet(
+                        user: this.widget.user,
+                      ),
                     ),
                   );
                 },
@@ -78,7 +91,9 @@ class TrangChu extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => XepHang(),
+                      builder: (context) => XepHang(
+                        user: this.widget.user,
+                      ),
                     ),
                   );
                 },

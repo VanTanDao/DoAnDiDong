@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:http/http.dart' as http;
 import 'package:vantan/Service/global.dart';
+import 'package:vantan/Service/user.dart';
 
 class AuthService {
   //dang ky
@@ -32,5 +32,17 @@ class AuthService {
     http.Response response = await http.post(url, body: body, headers: headers);
     print(body);
     return response;
+  }
+
+  static Future<User?> fetchUser(String username, String password) async {
+    http.Response response = await login(username, password);
+    User? result;
+    if (response.statusCode == 200) {
+      final parsed = jsonDecode(response.body);
+      final data = parsed["user"];
+      print(data);
+      result = User.fromJson(data);
+    }
+    return result;
   }
 }

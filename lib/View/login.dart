@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:vantan/Service/auth.dart';
 import 'package:vantan/Quiz/giaodienchoi.dart';
@@ -7,8 +8,10 @@ import 'package:vantan/quenmatkhau.dart';
 import 'package:vantan/View/register.dart';
 import 'package:vantan/trang_chu.dart';
 import '../Service/global.dart';
+import '../Service/user.dart';
 
 class LoginScreen extends StatefulWidget {
+  LoginScreen({Key? key}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return LoginScreenState();
@@ -25,10 +28,15 @@ class LoginScreenState extends State<LoginScreen> {
           await AuthService.login(username.text, password.text);
       Map responseMap = jsonDecode(response.body);
       if (response.statusCode == 200) {
+        User? us = await AuthService.fetchUser(username.text, password.text);
+        // var data = json.decode(response.body);
+        print(us);
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => TrangChu(),
+              builder: (BuildContext context) => TrangChu(
+                user: us,
+              ),
             ));
       } else {
         errorSnackBar(context, responseMap.values.toString());

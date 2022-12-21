@@ -11,12 +11,15 @@ import 'package:vantan/Service/quiztions.dart';
 import 'package:vantan/Quiz/giaodienchoi.dart';
 import 'package:vantan/trang_chu.dart';
 
+import '../Service/user.dart';
 import 'app_colors.dart';
 import 'audience_help.dart';
 
 class QuizScreen extends StatefulWidget {
+  User? user;
   int category;
-  QuizScreen({Key? key, required this.category}) : super(key: key);
+  QuizScreen({Key? key, required this.category, required this.user})
+      : super(key: key);
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -39,6 +42,7 @@ class _QuizScreenState extends State<QuizScreen> {
   int sodu = 2000;
   int muadapan = 100;
   int swap = 1;
+  int call = 1;
 
   var isLoaded = false;
 
@@ -93,7 +97,9 @@ class _QuizScreenState extends State<QuizScreen> {
                   TextButton(
                       onPressed: () => Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
-                            builder: (context) => GiaodienchoiScreen(),
+                            builder: (context) => GiaodienchoiScreen(
+                              user: this.widget.user,
+                            ),
                           ),
                           (Route<dynamic> route) => false),
                       child: Text('Tiêp tục')),
@@ -141,6 +147,7 @@ class _QuizScreenState extends State<QuizScreen> {
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
                   var data = snapshot.data["question"];
+                  indexanswer = data[currentQuestionIndex]["correct_answer"];
                   if (isLoaded == false) {
                     optionsList
                         .add(data[currentQuestionIndex]["incorrect_answer_1"]);
@@ -183,7 +190,10 @@ class _QuizScreenState extends State<QuizScreen> {
                                                   .pushAndRemoveUntil(
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            TrangChu(),
+                                                            TrangChu(
+                                                          user:
+                                                              this.widget.user,
+                                                        ),
                                                       ),
                                                       (Route<dynamic> route) =>
                                                           false),
@@ -304,7 +314,10 @@ class _QuizScreenState extends State<QuizScreen> {
                                                   .pushAndRemoveUntil(
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            GiaodienchoiScreen(),
+                                                            GiaodienchoiScreen(
+                                                          user:
+                                                              this.widget.user,
+                                                        ),
                                                       ),
                                                       (Route<dynamic> route) =>
                                                           false),
@@ -344,7 +357,10 @@ class _QuizScreenState extends State<QuizScreen> {
                                                   .pushAndRemoveUntil(
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            TrangChu(),
+                                                            TrangChu(
+                                                          user:
+                                                              this.widget.user,
+                                                        ),
                                                       ),
                                                       (Route<dynamic> route) =>
                                                           false),
@@ -434,25 +450,31 @@ class _QuizScreenState extends State<QuizScreen> {
                             ),
                             IconButton(
                               onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      content: Text(
-                                        '',
-                                        style: TextStyle(
-                                          fontSize: 50,
+                                if (call == 1) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        content: Text(
+                                          'Câu trả lời là "${indexanswer = data[currentQuestionIndex]["correct_answer"]}" đấy',
+                                          style: TextStyle(
+                                            fontSize: 50,
+                                          ),
                                         ),
-                                      ),
-                                      actions: [
-                                        TextButton(
-                                            onPressed: () =>
-                                                Navigator.pop(context),
-                                            child: Text('OK')),
-                                      ],
-                                    );
-                                  },
-                                );
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                              child: Text('OK')),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                  call = 0;
+                                } else {
+                                  errorSnackBar(
+                                      context, 'Bạn đã dùng hết lượt');
+                                }
                               },
                               icon: Icon(Icons.phone_callback),
                               color: Colors.white,

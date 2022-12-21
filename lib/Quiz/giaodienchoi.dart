@@ -9,7 +9,11 @@ import 'package:vantan/Service/linhvucobject.dart';
 import 'package:vantan/trang_chu.dart';
 import 'package:get/get.dart';
 
+import '../Service/user.dart';
+
 class GiaodienchoiScreen extends StatefulWidget {
+  User? user;
+  GiaodienchoiScreen({Key? key, required this.user}) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return MenuScreenState();
@@ -83,6 +87,7 @@ class MenuScreenState extends State<GiaodienchoiScreen> {
                                     MaterialPageRoute(
                                       builder: (context) => QuizScreen(
                                         category: lsProducts[index].id,
+                                        user: this.widget.user,
                                       ),
                                     ),
                                   );

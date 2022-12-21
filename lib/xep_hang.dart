@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:vantan/trang_chu.dart';
 
-class XepHang extends StatelessWidget {
+import 'Service/user.dart';
+
+class XepHang extends StatefulWidget {
+  User? user;
+  XepHang({Key? key, required this.user}) : super(key: key);
+  @override
+  State<XepHang> createState() => _XepHangState();
+}
+
+class _XepHangState extends State<XepHang> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +25,9 @@ class XepHang extends StatelessWidget {
             // );
             Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute(
-                  builder: (context) => TrangChu(),
+                  builder: (context) => TrangChu(
+                    user: this.widget.user,
+                  ),
                 ),
                 (Route<dynamic> route) => false);
           },
