@@ -52,17 +52,22 @@ class LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 4, 172, 249),
         actions: [
-           IconButton(onPressed: () {
-            showAboutDialog(context: context,
-            applicationName:"HƯỚNG DẪN CHƠI",
-            children: [
-              Text("1. Người chơi có duy nhất 1 lượt chơi."),
-              Text("2. Mỗi lượt chơi sẽ gồm 4 đáp án cho mỗi câu hỏi."),
-              Text("3. Người chơi sẽ có 5 sự trợ giúp ở mỗi lượt chơi."),
-              Text("4. Mỗi sự trợ giúp chỉ được sử dụng 1 lần cho 1 lượt chơi"),
-              Text("5. Khi trả lơi sai sẽ kết thúc lượt chơi")
-            ],);
-           }, icon: Icon(Icons.integration_instructions_outlined)),
+          IconButton(
+              onPressed: () {
+                showAboutDialog(
+                  context: context,
+                  applicationName: "HƯỚNG DẪN CHƠI",
+                  children: [
+                    Text("1. Người chơi có duy nhất 1 lượt chơi."),
+                    Text("2. Mỗi lượt chơi sẽ gồm 4 đáp án cho mỗi câu hỏi."),
+                    Text("3. Người chơi sẽ có 5 sự trợ giúp ở mỗi lượt chơi."),
+                    Text(
+                        "4. Mỗi sự trợ giúp chỉ được sử dụng 1 lần cho 1 lượt chơi"),
+                    Text("5. Khi trả lơi sai sẽ kết thúc lượt chơi")
+                  ],
+                );
+              },
+              icon: Icon(Icons.integration_instructions_outlined)),
         ],
       ),
       body: Container(
@@ -73,7 +78,7 @@ class LoginScreenState extends State<LoginScreen> {
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.only(top: 50),
+                padding: const EdgeInsets.only(top: 5),
                 child: Image(
                   height: 200,
                   width: 250,
@@ -81,7 +86,7 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top: 50),
+                padding: EdgeInsets.only(top: 20),
                 child: Text(
                   'Đăng Nhập Tài Khoản',
                   style: TextStyle(

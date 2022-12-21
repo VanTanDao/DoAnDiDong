@@ -24,10 +24,11 @@ class QuizScreen extends StatefulWidget {
 
 class _QuizScreenState extends State<QuizScreen> {
   var currentQuestionIndex = 0;
-  int seconds = 60;
+  int seconds = 30;
+
   Timer? timer;
   late Future quiz;
-
+  int heart = 1;
   int points = 0;
 
   int sodapan = 4;
@@ -80,7 +81,30 @@ class _QuizScreenState extends State<QuizScreen> {
         if (seconds > 0) {
           seconds--;
         } else {
-          gotoNextQuestion();
+          heart = heart - 1;
+          timer.cancel();
+          if (heart == 0) {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                content: Text(
+                    'Hết Thời Gian Trả Lời! Điểm của bạn' + points.toString()),
+                actions: [
+                  TextButton(
+                      onPressed: () => Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => GiaodienchoiScreen(),
+                          ),
+                          (Route<dynamic> route) => false),
+                      child: Text('Tiêp tục')),
+                ],
+              ),
+            );
+            // getPoint();
+            // quitGame(context);
+          } else {
+            gotoNextQuestion();
+          }
         }
       });
     });
@@ -92,7 +116,7 @@ class _QuizScreenState extends State<QuizScreen> {
     resetColors();
     optionsList = [];
     timer!.cancel();
-    seconds = 60;
+    seconds = 30;
     startTimer();
   }
 
@@ -191,7 +215,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                 width: 50,
                                 height: 50,
                                 child: CircularProgressIndicator(
-                                  value: seconds / 60,
+                                  value: seconds / 30,
                                   valueColor: const AlwaysStoppedAnimation(
                                       Colors.white),
                                 ),
@@ -254,9 +278,47 @@ class _QuizScreenState extends State<QuizScreen> {
                                   if (answer.toString() ==
                                       optionsList[index].toString()) {
                                     optionsColor[index] = Colors.green;
-                                    points = points + 10;
+                                    points = points + 1000;
                                   } else {
                                     optionsColor[index] = Colors.yellow;
+                                    // heart == 0;
+
+                                    timer?.cancel();
+                                  }
+                                  if (answer.toString() !=
+                                      optionsList[index].toString()) {
+                                    // timer!.cancel();
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                        content: Text('Bạn đã trả lời sai' +
+                                            points.toString()),
+                                        actions: [
+                                          // TextButton(
+                                          //     onPressed: () =>
+                                          //         Navigator.pop(context),
+                                          //     child: Text('Tiếp tục')),
+                                          TextButton(
+                                              onPressed: () => Navigator.of(
+                                                      context)
+                                                  .pushAndRemoveUntil(
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            GiaodienchoiScreen(),
+                                                      ),
+                                                      (Route<dynamic> route) =>
+                                                          false),
+                                              child: Text('Ok')),
+                                        ],
+                                      ),
+                                    );
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) =>
+                                    //         GiaodienchoiScreen(),
+                                    //   ),
+                                    // );
                                   }
 
                                   if (currentQuestionIndex < data.length - 1) {
@@ -290,6 +352,15 @@ class _QuizScreenState extends State<QuizScreen> {
                                         ],
                                       ),
                                     );
+                                  }
+                                  if (currentQuestionIndex > data.length - 1) {
+                                    Future.delayed(const Duration(seconds: 0),
+                                        () {
+                                      gotoNextQuestion();
+                                    });
+                                  } else {
+                                    timer!.cancel();
+
                                     //here you can do whatever you want with the results
                                   }
                                 });
